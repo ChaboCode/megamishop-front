@@ -1,0 +1,41 @@
+.homeBanner {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: 300px;
+    background: #91ff3f;
+}
+
+.homeBannerSwitcher {
+    width: 40px;
+    border: 0;
+
+    background: var(--black-light);
+    filter: opacity(0.3);
+
+    transition: width 100ms ease;
+}
+
+.homeBannerSwitcher:hover {
+    width: 80px;
+    filter: opacity(0.6);
+    cursor: pointer;
+}
+
+.switcherLeft {
+
+}
+
+.switcherRight {
+
+}
+
+.homeBannerSlider {
+
+}
+
+.homeBannerDisplay {
+    width: 600px;
+    background: var(--accent-yellow);
+}
