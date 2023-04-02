@@ -1,19 +1,18 @@
-import Head from 'next/head'
-import Image from 'next/image';
-
-import Header from './components/Header'
-import MainBanner from './components/HomeBanner'
+import MegamiHead from "@/components/MegamiHead"
+import MegamiNavBar from "@/components/MegamiNavBar"
+import CardView, {CardItemProps} from "@/components/views/CardView"
 
 export default function Home() {
+  const cards: CardItemProps[] = [
+    {title: "Mona china", image: "/next.svg", price: 555},
+    {title: "Cartas Megami Monogatari", image: "/next.svg", price: 555},
+    {title: "XD", image: "/next.svg", price: 555},
+  ]
   return (
-      <>
-          <Head>
-              <title>MonaShop</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-        <MainBanner />
+    <>
+      <MegamiHead />
+      <MegamiNavBar />
+      <CardView cards={cards} />
     </>
   )
 }
