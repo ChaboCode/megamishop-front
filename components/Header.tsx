@@ -1,6 +1,6 @@
 import styles from '@/styles/Home.module.css'
 
-import HeaderLink from '@/pages/components/HeaderLink'
+import HeaderLink from '@/components/HeaderLink'
 import svgBox from '@/public/box.svg'
 
 export default function Header () {
