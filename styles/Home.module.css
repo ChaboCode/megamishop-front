@@ -2,9 +2,8 @@
   width: 100%;
   height: 56px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
 
   color: var(--background);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,15 +13,17 @@
   background-color: var(--black);
 }
 
-.header > * {
-  padding: 10px;
-}
-
 .headerAccent {
   width: 100%;
   height: 5px;
 
   background-color: var(--black);
+}
+
+.headerElements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerIconsLeft {
@@ -79,3 +80,12 @@
 .headerIconLink:hover > .headerLinkText {
   filter: none;
 } 
+
+.headerAccount {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+
+  font-size: 26px;
+}

@@ -1,13 +1,18 @@
+import { useSession, signIn, signOut } from 'next-auth/react'
+
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
 import HeaderLink from '@/components/HeaderLink'
 import svgBox from '@/public/box.svg'
 
 export default function Header () {
-    return (
+  const { data: session } = useSession()
+  return (
     <>
-      <main className={styles.main}>
-        <header className={styles.header}>
+      <header className={styles.header}>
+        <span className={styles.headerAccount} />
+        <div className={styles.headerElements}>
           <div className={styles.headerIconsLeft}>
             <HeaderLink svg={svgBox} text={'Figuras'}/>
             <HeaderLink svg={svgBox} text={'Pokemon'}/>
@@ -21,10 +26,21 @@ export default function Header () {
             <HeaderLink svg={svgBox} text={'Cartas'}/>
             <HeaderLink svg={svgBox} text={'Dulces'}/>
           </div>
-        </header>
-        <div className={styles.headerAccent}></div>
-      </main>
+        </div>
+        <div className={styles.headerAccount}>
+          { session && session.user ? (
+
+            <button onClick={() => signOut()}>Cerrar Sesi&oacute;n</button>
+          ) : (
+
+            <button onClick={() => signIn()}>Inicia Sesi&oacute;n</button>
+          )
+          
+          }
+        </div>
+      </header>
+      <div className={styles.headerAccent}></div>
     </>
 
-    )
+  )
 }
