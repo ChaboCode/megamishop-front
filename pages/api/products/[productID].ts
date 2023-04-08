@@ -8,7 +8,7 @@ function LoadProductById(req: NextApiRequest, res: NextApiResponse) {
   async function query() {
     // TODO: Create table `products`
     const product = await prisma.test.findMany({
-      where: { id: parseInt(productID) },
+      where: { id: parseInt(productID as string) },
     })
     return product
   }
