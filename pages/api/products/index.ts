@@ -19,7 +19,6 @@ function GetProducts(req: NextApiRequest, res: NextApiResponse) {
       console.error(e)
       res.status(500)
       await prisma.$disconnect()
-      process.exit(1)
     })
 }
 
