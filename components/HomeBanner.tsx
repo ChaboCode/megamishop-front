@@ -1,6 +1,6 @@
 import styles from '@/styles/HomeBanner.module.css'
 
-export default function HomeBanner () {
+export default function HomeBanner() {
     return (
         <div className={styles.homeBanner}>
             <button className={`${styles.homeBannerSwitcher} ${styles.switcherLeft}`} />
