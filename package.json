@@ -16,6 +16,7 @@
     "@types/react-dom": "18.0.11",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "get-image-colors": "^4.0.1",
     "next": "13.2.4",
     "next-auth": "^4.21.1",
     "prisma": "^4.12.0",
