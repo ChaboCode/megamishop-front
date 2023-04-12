@@ -11,3 +11,12 @@ model test {
   id   Int    @id
   name String @db.VarChar(50)
 }
+
+model products {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(100)
+  price       Decimal @db.Decimal
+  description String  @db.VarChar(500)
+  stock       Int
+  images       String[]
+}
