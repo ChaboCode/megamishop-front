@@ -18,5 +18,5 @@ model products {
   price       Decimal @db.Decimal
   description String  @db.VarChar(500)
   stock       Int
-  images       String[]
+  images      Int
 }

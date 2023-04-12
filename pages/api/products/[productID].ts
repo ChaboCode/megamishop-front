@@ -1,30 +1,41 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
+import { IProductState } from "@/interfaces/products";
+
 function LoadProductById(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient()
     const { productID } = req.query
 
     async function query() {
-        // TODO: Create table `products`
-        const product = await prisma.test.findMany({
+        return prisma.products.findMany({
             where: { id: parseInt(productID as string) },
         })
-        return product
     }
 
     query()
-        .then(async product => {
+        .then(async products => {
             await prisma.$disconnect()
-            console.log(product)
-            res.status(200).json(product)
+
+            if (products.length > 0) {
+                const product: IProductState = {
+                    id: products[0].id,
+                    name: products[0].name as string,
+                    price: products[0].price.toNumber(),
+                    stock: products[0].stock as number,
+                    images: products[0].images,
+                    desc: products[0].description
+                }
+                res.status(200).json(product)
+            }
+
+            res.status(200).json(null)
         })
         .catch(async err => {
             console.error(err)
             await prisma.$disconnect()
             res.status(500)
         })
-
 }
 
 export default LoadProductById

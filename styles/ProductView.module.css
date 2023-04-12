@@ -1,0 +1,108 @@
+.container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    --card-bg: linear-gradient(191deg, rgba(3,2,19,1) 0%, rgba(20,38,74,1) 100%);
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+
+    background: rgb(3,2,19);
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 5px #7e8084;
+}
+
+.pictures {
+    width: min-content;
+    height: 600px;
+    margin-right: 30px;
+
+    object-fit: scale-down;
+    border-radius: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 400px;
+}
+
+.title {
+    color: #d5deef;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.desc {
+    color: #9ea3ae;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.buy-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 50px 30px;
+    padding: 20px;
+
+    background: #e1e9f3;
+
+    border-radius: 10px;
+}
+
+.price {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+}
+
+
+.price-discount {
+
+}
+
+.button {
+    height: 45px;
+    margin: 5px 0;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+
+    border: none;
+    border-radius: 10px;
+    transition: 200ms ease;
+}
+
+.button:hover {
+    cursor: pointer;
+    filter: brightness(105%);
+    box-shadow: 0 0 5px var(--black-light);
+}
+
+.buy {
+    background: var(--accent-blue);
+    filter: brightness(100%);
+}
+
+.cart {
+    background: var(--accent-blue);
+    filter: grayscale(70%);
+}
+
+.cart:hover {
+    filter: grayscale(60%) brightness(105%);
+    box-shadow: none;
+}
+
+.stock {
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #7e8084;
+}
