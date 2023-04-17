@@ -19,4 +19,6 @@ model products {
   description String  @db.VarChar(500)
   stock       Int
   images      Int
+  createdAt   DateTime @default(now())
+  restockedAt DateTime @default(now())
 }
