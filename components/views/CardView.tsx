@@ -9,21 +9,21 @@ export interface CardItemProps {
     price: number;
 }
 
-export function CardItem({id, image, title, price }: CardItemProps) {
+export function CardItem({ id, image, title, price }: CardItemProps) {
     return (
         <div>
             <Link href={`/products/${id}`} className={styles['card-item']}>
-            <Image
-                className={styles['card-item_img']}
-                src={image}
-                alt="picture"
-                width={200}
-                height={200} />
-            <div className={styles['card-item_title']}>{title}</div>
-            <div className={styles['card-item_price']}>${price}</div>
-            <Link href={`/products/${id}`} className={styles['card-item_buy']}>
-                Comprar
-            </Link>
+                <Image
+                    className={styles['card-item_img']}
+                    src={image}
+                    alt="picture"
+                    width={200}
+                    height={200} />
+                <div className={styles['card-item_title']}>{title}</div>
+                <div className={styles['card-item_price']}>${price}</div>
+                <Link href={`/products/${id}`} className={styles['card-item_buy']}>
+                    Comprar
+                </Link>
             </Link>
         </div>
     )

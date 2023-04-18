@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import CardView, {CardItemProps} from "@/components/views/CardView";
+import { useEffect, useState } from "react";
+import CardView, { CardItemProps } from "@/components/views/CardView";
 
 function Latest() {
     const [cards, setCards] = useState<CardItemProps[]>([])
@@ -18,7 +18,7 @@ function Latest() {
     let cardView: JSX.Element = <></>
 
     if (isLoading) cardView = <p>Loading</p>
-    if (cards) cardView = <CardView cards={cards as CardItemProps[]}/>
+    if (cards) cardView = <CardView cards={cards as CardItemProps[]} />
 
     return cardView
 }
