@@ -1,15 +1,18 @@
 import Image from "next/image"
 import styles from "@/styles/CardView.module.css"
+import Link from "next/link";
 
 export interface CardItemProps {
+    id: number;
     image: string;
     title: string;
     price: number;
 }
 
-export function CardItem({ image, title, price }: CardItemProps) {
+export function CardItem({id, image, title, price }: CardItemProps) {
     return (
-        <div className={styles['card-item']}>
+        <div>
+            <Link href={`/products/${id}`} className={styles['card-item']}>
             <Image
                 className={styles['card-item_img']}
                 src={image}
@@ -18,7 +21,10 @@ export function CardItem({ image, title, price }: CardItemProps) {
                 height={200} />
             <div className={styles['card-item_title']}>{title}</div>
             <div className={styles['card-item_price']}>${price}</div>
-            <button className={styles['card-item_buy']}>Comprar</button>
+            <Link href={`/products/${id}`} className={styles['card-item_buy']}>
+                Comprar
+            </Link>
+            </Link>
         </div>
     )
 }
@@ -32,6 +38,7 @@ export default function CardView({ cards }: CardViewProps) {
         return (
             <CardItem
                 key={index}
+                id={card.id}
                 image={card.image}
                 title={card.title}
                 price={card.price}

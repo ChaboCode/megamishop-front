@@ -1,14 +1,19 @@
+import {useEffect, useState} from "react";
+
 import MegamiHead from "@/components/MegamiHead"
 import MegamiNavBar from "@/components/MegamiNavBar"
-import CardView, { CardItemProps } from "@/components/views/CardView"
+import HomeBanner from "@/components/HomeBanner";
+import Latest from "@/components/Latest";
+
 
 export default function Home() {
-    const cards: CardItemProps[] = []
+
     return (
         <>
             <MegamiHead />
             <MegamiNavBar />
-            <CardView cards={cards} />
+            <HomeBanner />
+            <Latest />
         </>
     )
 }

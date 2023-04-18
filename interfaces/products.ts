@@ -7,3 +7,10 @@ export interface IProductState {
     desc: string  // Description
     //TODO: Add discount field
 }
+
+export interface IProductCardState {
+    id: number
+    name: string
+    price: number
+    stock: number
+}

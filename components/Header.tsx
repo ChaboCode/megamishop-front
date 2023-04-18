@@ -18,9 +18,9 @@ export default function Header() {
                         <HeaderLink svg={svgBox} text={'Pokemon'} />
                         <HeaderLink svg={svgBox} text={'Vocaloid'} />
                     </div>
-                    <div className={styles.headerTitle}>
+                    <Link href={'/'} className={styles.headerTitle}>
                         MonaShop
-                    </div>
+                    </Link>
                     <div className={styles.headerIconsLeft + ' ' + styles.headerIconsRight}>
                         <HeaderLink svg={svgBox} text={'Ropa'} />
                         <HeaderLink svg={svgBox} text={'Cartas'} />

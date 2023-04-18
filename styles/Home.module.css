@@ -26,6 +26,11 @@
   align-items: center;
 }
 
+.headerTitle {
+  text-decoration: none;
+  color: inherit;
+}
+
 .headerIconsLeft {
   display: flex;
   justify-content: right;
@@ -65,7 +70,7 @@
 
 
   transition: ease 0.3s;
-  filter: grayscale() opacity(0.3);
+  filter: grayscale(1) opacity(0.3);
 }
 
 .headerIconLink:hover {

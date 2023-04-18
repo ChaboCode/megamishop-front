@@ -1,12 +1,11 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import type {NextApiRequest, NextApiResponse} from 'next'
+import {PrismaClient} from '@prisma/client'
 
 function GetProducts(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient()
 
     async function query() {
-        const data = await prisma.test.findMany()
-        return data
+        return prisma.products.findMany();
     }
 
     query()

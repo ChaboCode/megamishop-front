@@ -8,6 +8,7 @@
 .card-view {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  row-gap: 24px;
   justify-items: center;
 
   width: 70%;
@@ -24,13 +25,17 @@
   border: 1px solid var(--black-light);
   border-radius: 5px;
 
-  box-shadow: 0px 0px 4px var(--black);
+  color: black;
+  text-decoration: none;
+
+  /*box-shadow: 0px 0px 4px var(--black);*/
 
   transition: 200ms ease;
 }
 
 .card-item_img {
   background-color: red;
+  object-fit: cover;
 }
 
 .card-item_title {
@@ -46,13 +51,18 @@
 }
 
 .card-item_buy {
+  display: flex;
+  justify-content: center;
   width: 100px;
   margin-left: auto;
   padding: 6px;
 
-  border: none;
+  color: white;
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
 
-  color: black;
+  border-radius: 10px;
   background-color: var(--button-blue);
   
   transition: 200ms ease;
@@ -65,6 +75,6 @@
 
 .card-item:hover {
   cursor: pointer;
-  box-shadow: 0px 0px 8px var(--black);
+  /*box-shadow: 0px 0px 8px var(--black);*/
 }
 
