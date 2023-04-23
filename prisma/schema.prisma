@@ -33,7 +33,7 @@ model cart {
   purchase    purchase?
   createdAt   DateTime       @default(now())
   uid         String
-  purchaseID  Int            @unique
+  purchaseID  Int?            @unique
 }
 
 model cart_product {
@@ -43,7 +43,7 @@ model cart_product {
   quantity    Int
   isDeleted   Boolean  @default(false)
   addedDate   DateTime @default(now())
-  deletedDate DateTime
+  deletedDate DateTime?
   cartID      Int
   productID   Int
 }
