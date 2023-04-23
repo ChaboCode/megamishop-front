@@ -8,7 +8,7 @@ function LoadProductById(req: NextApiRequest, res: NextApiResponse) {
     const { productID } = req.query
 
     async function query() {
-        return prisma.products.findMany({
+        return prisma.product.findMany({
             where: { id: parseInt(productID as string) },
         })
     }

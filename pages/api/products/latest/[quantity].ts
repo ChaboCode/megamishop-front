@@ -8,7 +8,7 @@ function GetLatestProducts(req: NextApiRequest, res: NextApiResponse) {
     const { quantity } = req.query
 
     async function query() {
-        return prisma.products.findMany({
+        return prisma.product.findMany({
             orderBy: {
                 id: 'desc'
             },

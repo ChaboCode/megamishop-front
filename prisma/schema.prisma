@@ -13,32 +13,45 @@ model test {
 }
 
 model product {
-  id          Int      @id @default(autoincrement())
-  name        String   @db.VarChar(100)
-  price       Decimal  @db.Decimal
-  description String   @db.VarChar(500)
-  stock       Int
-  images      Int
-  createdAt   DateTime @default(now())
-  restockedAt DateTime @default(now())
-  carts       cart     @relation(fields: [cartsId], references: [id])
-  cartsId     Int
+  id            Int            @id @default(autoincrement())
+  name          String         @db.VarChar(100)
+  price         Decimal        @db.Decimal
+  description   String         @db.VarChar(500)
+  stock         Int
+  images        Int
+  createdAt     DateTime       @default(now())
+  restockedAt   DateTime       @default(now())
+  cart_products cart_product[]
 }
 
 model cart {
-  id         Int         @id @default(autoincrement())
-  uid        String
-  user       User        @relation(fields: [uid], references: [id], onDelete: Cascade)
-  productsId Int[]
-  products   product[]   @relation()
-  purchased  Boolean     @default(false)
-  purchases  purchase[]
+  id          Int            @id @default(autoincrement())
+  products    cart_product[]
+  user        User           @relation(fields: [uid], references: [id], onDelete: Cascade)
+  isPurchased Boolean        @default(false)
+  purchaseAt  DateTime?
+  purchase    purchase?
+  createdAt   DateTime       @default(now())
+  uid         String
+  purchaseID  Int            @unique
+}
+
+model cart_product {
+  id          Int      @id @default(autoincrement())
+  cart        cart     @relation(fields: [cartID], references: [id], onDelete: Cascade)
+  product     product  @relation(fields: [productID], references: [id], onDelete: Cascade)
+  quantity    Int
+  isDeleted   Boolean  @default(false)
+  addedDate   DateTime @default(now())
+  deletedDate DateTime
+  cartID      Int
+  productID   Int
 }
 
 model purchase {
   id     Int  @id @default(autoincrement())
-  cartId Int
-  cart   cart @relation(fields: [cartId], references: [id])
+  cart   cart @relation(fields: [cartID], references: [id])
+  cartID Int  @unique
 }
 
 ////////////////
