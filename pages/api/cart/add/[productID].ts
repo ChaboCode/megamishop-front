@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {PrismaClient, Prisma, cart} from "@prisma/client";
+import cartUncheckedCreateInput = Prisma.cartUncheckedCreateInput;
 
 function AddProductToCart(req: NextApiRequest, res: NextApiResponse) {
     const {method} = req
@@ -35,7 +36,7 @@ function AddProductToCart(req: NextApiRequest, res: NextApiResponse) {
                     uid: uid as string,
                     products: {},
 
-                },
+                } as cartUncheckedCreateInput,
                 select: {
 
                 }

@@ -7,7 +7,7 @@ function AddItemToCart() {
         <>
             <MegamiHead />
             <MegamiNavBar />
-            <ProductCard />
+            {/*<ProductCard />*/}
         </>
     )
 }
