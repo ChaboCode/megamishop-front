@@ -1,11 +1,10 @@
+import Link from "next/link";
 import Image from "next/image";
-import { IProductState } from "@/interfaces/products";
 
+import { ProductViewParams } from "@/interfaces/products";
 import styles from "@/styles/ProductView.module.css"
+import AddToCartButton from "@/components/AddToCartButton";
 
-interface ProductViewParams {
-    product: IProductState | undefined | null;
-}
 
 function GetProductPictureURL(id: number, image: number): string {
     return `/products/${id}_${image}.png`
@@ -20,6 +19,7 @@ function GetProductPictureURLs(id: number, images: number): string[] {
 }
 
 function ProductView({ product }: ProductViewParams) {
+
     if (product == null) {
         return (
             <div>Loading...</div>
@@ -42,8 +42,8 @@ function ProductView({ product }: ProductViewParams) {
                     </div>
                     <div className={styles["buy-container"]}>
                         <span className={styles.price}>${product.price}</span>
-                        <button className={`${styles.button} ${styles.buy}`}>Comprar ahora</button>
-                        <button className={`${styles.button} ${styles.cart}`}>Agregar al carrito</button>
+                        <Link href={`/products/buy/${product.id}`} className={`${styles.button} ${styles.buy}`}>Comprar ahora</Link>
+                        <AddToCartButton productID={product.id} />
                         <div className={styles.stock}>
                             DISPONIBLES: {product.stock}
                         </div>

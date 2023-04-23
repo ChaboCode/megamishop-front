@@ -1,0 +1,11 @@
+.container {
+    padding: 10px 10px 10px 150px;
+}
+
+.title {
+    color: black;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}

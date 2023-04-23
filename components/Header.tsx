@@ -29,15 +29,17 @@ export default function Header() {
                 </div>
                 <div className={styles.headerAccount}>
                     {session && session.user ? (
-
-                        <button onClick={() => signOut()}>Cerrar Sesi&oacute;n</button>
+                        <>
+                            <Link href={'/cart'}>Carrito</Link>
+                            <button onClick={() => signOut()}>Cerrar Sesi&oacute;n</button>
+                        </>
                     ) : (
-
-                        <button onClick={() => signIn()}>Inicia Sesi&oacute;n</button>
-                    )
-
-                    }
-                </div>
+                        <>
+                            <button onClick={() => signIn()}>Carrito</button>
+                            <button onClick={() => signIn()}>Inicia Sesi&oacute;n</button>
+                        </>
+                    )}
+                    </div>
             </header>
             <div className={styles.headerAccent}></div>
         </>

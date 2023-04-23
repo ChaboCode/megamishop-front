@@ -14,3 +14,7 @@ export interface IProductCardState {
     price: number
     stock: number
 }
+
+export interface ProductViewParams {
+    product: IProductState | undefined | null;
+}
