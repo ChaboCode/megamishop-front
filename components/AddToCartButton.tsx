@@ -1,15 +1,15 @@
-import {useRouter} from "next/router";
-import {useSession} from "next-auth/react";
-import {useState} from "react";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import { useState } from "react";
 import styles from "@/styles/ProductView.module.css";
 
 interface AddToCartParams {
     productID: number
 }
 
-function AddToCartButton({productID}: AddToCartParams) {
+function AddToCartButton({ productID }: AddToCartParams) {
     const router = useRouter()
-    const {data: session} = useSession()
+    const { data: session } = useSession()
 
     const [cartState, setCartState] = useState("Agregar al carrito")
 
@@ -26,6 +26,7 @@ function AddToCartButton({productID}: AddToCartParams) {
                     // TODO: Create floating messages
                     setCartState("¡Agregado!")
                     router.push(`/cart/add/${productID}`)
+                    return
                 }
                 // TODO: Create floating messages
                 alert("Failed to save cart")
@@ -33,14 +34,12 @@ function AddToCartButton({productID}: AddToCartParams) {
             .catch(err => {
                 // TODO: Create floating messages
                 alert("Failed to save cart")
-            })
-            .finally(() => {
                 setCartState("Agregar al carrito")
             })
     }
 
     return (
-            <button className={`${styles.button} ${styles.cart}`} onClick={e => addToCart()}>{cartState}</button>
+        <button className={`${styles.button} ${styles.cart}`} onClick={e => addToCart()}>{cartState}</button>
     )
 }
 

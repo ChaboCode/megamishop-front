@@ -15,7 +15,7 @@ export default NextAuth({
         // ...more providers here
     ],
     callbacks: {
-        jwt: async ({user, token}) => {
+        jwt: async ({ user, token }) => {
             if (user) {
                 token.uid = user.id;
             }

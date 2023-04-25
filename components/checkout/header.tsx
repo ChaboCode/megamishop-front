@@ -1,7 +1,7 @@
 import styles from '@/styles/Purchase.module.css'
 import Link from "next/link";
 
-function PurchaseHeader() {
+function Header() {
     return (
         <div className={styles['container']}>
             <Link href={'/'} className={styles['title']}>MegamiShop</Link>
@@ -9,4 +9,4 @@ function PurchaseHeader() {
     )
 }
 
-export default PurchaseHeader
+export default Header

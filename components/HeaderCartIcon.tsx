@@ -1,6 +1,6 @@
 
 function HeaderCartIcon() {
-    return(
+    return (
         <div>
 
         </div>

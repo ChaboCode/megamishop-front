@@ -39,7 +39,7 @@ export default function Header() {
                             <button onClick={() => signIn()}>Inicia Sesi&oacute;n</button>
                         </>
                     )}
-                    </div>
+                </div>
             </header>
             <div className={styles.headerAccent}></div>
         </>
