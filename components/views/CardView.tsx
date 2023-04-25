@@ -21,9 +21,9 @@ export function CardItem({ id, image, title, price }: CardItemProps) {
                     height={200} />
                 <div className={styles['card-item_title']}>{title}</div>
                 <div className={styles['card-item_price']}>${price}</div>
-                <Link href={`/products/${id}`} className={styles['card-item_buy']}>
+                <div className={styles['card-item_buy']}>
                     Comprar
-                </Link>
+                </div>
             </Link>
         </div>
     )

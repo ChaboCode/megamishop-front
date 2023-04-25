@@ -6,7 +6,7 @@ import cart_productUncheckedCreateInput = Prisma.cart_productUncheckedCreateInpu
 function AddProductToCart(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req
     const { productID } = req.query
-    const { uid } = req.body
+    const { uid } = JSON.parse(req.body)
     const prisma = new PrismaClient()
 
     if (method != 'POST') {
