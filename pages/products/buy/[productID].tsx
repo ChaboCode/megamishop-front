@@ -7,3 +7,5 @@ function BuyProduct() {
         </>
     )
 }
+
+export default BuyProduct

@@ -5,7 +5,7 @@ function GetProducts(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient()
 
     async function query() {
-        return prisma.products.findMany();
+        return prisma.product.findMany();
     }
 
     query()
