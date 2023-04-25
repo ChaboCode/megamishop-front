@@ -1,10 +1,16 @@
 import styles from '@/styles/Purchase.module.css'
-import PurchaseHeader from "@/components/PurchaseHeader";
+import CheckoutHeader from "@/components/checkout/header";
+import ProductList from "@/components/checkout/ProductList";
+import CartPrice from "@/components/checkout/CartPrice";
 
 function Cart() {
     return (
         <>
-            <PurchaseHeader />
+            <CheckoutHeader />
+            <div style={{ display: 'flex' }}>
+                <ProductList />
+                <CartPrice />
+            </div>
         </>
     )
 }
