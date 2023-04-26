@@ -11,7 +11,6 @@ export interface CardItemProps {
 
 export function CardItem({ id, image, title, price }: CardItemProps) {
     return (
-        <div>
             <Link href={`/products/${id}`} className={styles['card-item']}>
                 <Image
                     className={styles['card-item_img']}
@@ -25,7 +24,6 @@ export function CardItem({ id, image, title, price }: CardItemProps) {
                     Comprar
                 </div>
             </Link>
-        </div>
     )
 }
 

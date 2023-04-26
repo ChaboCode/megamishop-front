@@ -2,47 +2,53 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import Image from "next/image";
 
 import HeaderLink from '@/components/HeaderLink'
 import svgBox from '@/public/box.svg'
+import HeaderUser from "@/components/HeaderUser";
+import HeaderCart from "@/components/HeaderCart";
+import HeaderDropdown from "@/components/HeaderDropdown";
+import {useState} from "react";
 
 export default function Header() {
     const { data: session } = useSession()
+    const [isMenuOpen, setMenuOpen] = useState(false)
+
     return (
         <>
             <header className={styles.header}>
-                <span className={styles.headerAccount} />
+                <button className={styles['dropdown-button']} onClick={e => setMenuOpen(!isMenuOpen)}>
+                    <Image src={'/menu.png'} alt="Menu" width={40} height={40}/>
+                </button>
                 <div className={styles.headerElements}>
                     <div className={styles.headerIconsLeft}>
                         <HeaderLink svg={svgBox} text={'Figuras'} />
                         <HeaderLink svg={svgBox} text={'Pokemon'} />
-                        <HeaderLink svg={svgBox} text={'Vocaloid'} />
                     </div>
                     <Link href={'/'} className={styles.headerTitle}>
-                        MonaShop
+                        MegamiShop
                     </Link>
                     <div className={styles.headerIconsLeft + ' ' + styles.headerIconsRight}>
                         <HeaderLink svg={svgBox} text={'Ropa'} />
                         <HeaderLink svg={svgBox} text={'Cartas'} />
-                        <HeaderLink svg={svgBox} text={'Dulces'} />
                     </div>
                 </div>
                 <div className={styles.headerAccount}>
-                    {session && session.user ? (
-                        <>
-                            <Link href={'/cart'}>Carrito</Link>
-                            <button onClick={() => signOut()}>Cerrar Sesi&oacute;n</button>
-                        </>
-                    ) : (
-                        <>
-                            <button onClick={() => signIn()}>Carrito</button>
-                            <button onClick={() => signIn()}>Inicia Sesi&oacute;n</button>
-                        </>
-                    )}
+                    <span></span>
+                    <HeaderCart />
+                    <HeaderUser />
                 </div>
             </header>
-            <div className={styles.headerAccent}></div>
-        </>
 
+            <div className={styles['dropdown']} style={{display: isMenuOpen ? 'flex' : 'none'}}>
+                <HeaderLink svg={svgBox} text={'Figuras'} />
+                <HeaderLink svg={svgBox} text={'Pokemon'} />
+                <HeaderLink svg={svgBox} text={'Ropa'} />
+                <HeaderLink svg={svgBox} text={'Cartas'} />
+                <HeaderCart dropdown/>
+                <HeaderUser dropdown/>
+            </div>
+        </>
     )
 }
