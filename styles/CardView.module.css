@@ -92,18 +92,25 @@
 @media screen and (min-width: 1500px) {
   .card-view {
     grid-template-columns: repeat(4, 1fr);
+    width: 70%;
   }
 }
 
 @media screen and (max-width: 768px) {
   .card-item_img {
     width: 100%;
+    border-radius: 10px;
   }
   .card-item {
     width: 70%;
+    border-color: #9ea3ae;
   }
 
   .card-item > * {
     line-break: strict;
+  }
+
+  .card-item_buy {
+    margin-top: 10px;
   }
 }

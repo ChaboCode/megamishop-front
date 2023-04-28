@@ -118,9 +118,9 @@
 
 .dropdown-button {
   display: flex;
+  align-items: center;
   height: 100%;
   width: min-content;
-  align-items: center;
 
   background: none;
   border: none;
@@ -139,7 +139,7 @@
   display: inherit;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 4px 0;
+  padding: 12px 0;
 }
 
 @media screen and (min-width: 768px) {
