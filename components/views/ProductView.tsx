@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ProductViewParams } from "@/interfaces/products";
 import styles from "@/styles/ProductView.module.css"
 import AddToCartButton from "@/components/AddToCartButton";
+import BuyButton from "@/components/BuyButton";
 
 
 function GetProductPictureURL(id: number, image: number): string {
@@ -42,7 +43,7 @@ function ProductView({ product }: ProductViewParams) {
                     </div>
                     <div className={styles["buy-container"]}>
                         <span className={styles.price}>${product.price}</span>
-                        <Link href={`/products/buy/${product.id}`} className={`${styles.button} ${styles.buy}`}>Comprar ahora</Link>
+                        <BuyButton productID={product.id} />
                         <AddToCartButton productID={product.id} />
                         <div className={styles.stock}>
                             DISPONIBLES: {product.stock}

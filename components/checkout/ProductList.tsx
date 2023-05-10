@@ -4,6 +4,17 @@ import { useEffect, useState } from "react";
 import { ICart } from "@/interfaces/cart";
 import { useSession } from "next-auth/react";
 
+interface PremadeParams {
+    list: JSX.Element
+}
+
+export function PremadeProductList({list}: PremadeParams) {
+    return (
+        <div className={styles['container']}>
+            {list}
+        </div>
+    )
+}
 
 function ProductList() {
     const { data: session } = useSession()
@@ -17,7 +28,7 @@ function ProductList() {
             setLoading(false)
             return
         }
-        fetch(`/api/cart/${session?.user.id}`)
+        fetch(`/api/cart/user/${session?.user.id}`)
             .then(res => res.json())
             .then(res => {
                 setCart(res)
@@ -32,7 +43,7 @@ function ProductList() {
         list = <>{cart?.products.map(product => {
             const { id, title, price, quantity } = product
             return <ProductCard key={id} picture={`/products/${id}_0.png`} productID={id} title={title}
-                price={price} quantity={quantity}/>
+                price={price} quantity={quantity} />
         })}</>
     }
 

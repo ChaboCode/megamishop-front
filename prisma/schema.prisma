@@ -28,6 +28,7 @@ model cart {
   id          Int            @id @default(autoincrement())
   products    cart_product[]
   user        User           @relation(fields: [uid], references: [id], onDelete: Cascade)
+  isOneTime   Boolean        @default(false)
   isPurchased Boolean        @default(false)
   purchaseAt  DateTime?
   purchase    purchase?

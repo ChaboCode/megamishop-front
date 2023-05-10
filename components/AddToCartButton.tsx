@@ -15,7 +15,7 @@ function AddToCartButton({ productID }: AddToCartParams) {
 
     function addToCart() {
         setCartState("Agregando...")
-        fetch(`/api/cart/add/${productID}`, {
+        fetch(`/api/cart/${productID}/add`, {
             method: 'post',
             body: JSON.stringify({
                 uid: session?.user.id

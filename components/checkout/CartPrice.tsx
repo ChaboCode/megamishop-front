@@ -1,22 +1,34 @@
 import styles from "@/styles/CartPrice.module.css"
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
+
+export interface CartData {
+    id: number,
+    total: number,
+    isOneTime: boolean,
+}
 
 function CartPrice() {
-    const {data: session } = useSession()
+    const { data: session } = useSession()
+
     const [total, setTotal] = useState(69)
     const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
+        const uid = session?.user.id
         setLoading(true)
-        fetch(`/api/cart/${session?.user.id}/total`)
+        fetch(`/api/cart/user/${uid}/total`)
             .then(res => res.json())
             .then(res => {
                 setTotal(res.total)
                 setLoading(false)
             })
     }, [session?.user.id])
+
+    useEffect(() => {
+        const uid = session?.user.id
+    })
 
     let price: JSX.Element
     if (isLoading) {

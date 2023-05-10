@@ -11,19 +11,19 @@ export interface CardItemProps {
 
 export function CardItem({ id, image, title, price }: CardItemProps) {
     return (
-            <Link href={`/products/${id}`} className={styles['card-item']}>
-                <Image
-                    className={styles['card-item_img']}
-                    src={image}
-                    alt="picture"
-                    width={200}
-                    height={200} />
-                <div className={styles['card-item_title']}>{title}</div>
-                <div className={styles['card-item_price']}>${price}</div>
-                <div className={styles['card-item_buy']}>
-                    Comprar
-                </div>
-            </Link>
+        <Link href={`/products/${id}`} className={styles['card-item']}>
+            <Image
+                className={styles['card-item_img']}
+                src={image}
+                alt="picture"
+                width={200}
+                height={200} />
+            <div className={styles['card-item_title']}>{title}</div>
+            <div className={styles['card-item_price']}>${price}</div>
+            <div className={styles['card-item_buy']}>
+                Comprar
+            </div>
+        </Link>
     )
 }
 

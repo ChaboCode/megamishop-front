@@ -42,10 +42,10 @@ function ProductPage() {
         <>
             <MegamiHead />
             <MegamiNavBar />
+
             {productView}
         </>
     )
 }
 
 export default ProductPage
-

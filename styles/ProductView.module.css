@@ -92,6 +92,20 @@
     box-shadow: 0 0 5px var(--black-light);
 }
 
+.loader {
+    display: flex;
+    height: 100%;
+}
+
+.loader > div {
+    display: flex;
+    align-items: center;
+}
+
+.loader > div > svg {
+    height: 80%;
+}
+
 .buy {
     background: var(--accent-blue);
     filter: brightness(100%);

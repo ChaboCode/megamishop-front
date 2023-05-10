@@ -1,9 +1,10 @@
-import type {NextApiRequest, NextApiResponse} from 'next'
-import {PrismaClient} from "@prisma/client"
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { PrismaClient } from "@prisma/client"
+import { CartData } from "@/components/checkout/CartPrice";
 
 function GetCartTotal(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient()
-    const {uid} = req.query
+    const { uid } = req.query
 
     async function query() {
         const cartProducts = await prisma.cart.findMany({
@@ -12,6 +13,8 @@ function GetCartTotal(req: NextApiRequest, res: NextApiResponse) {
                 isPurchased: false
             },
             select: {
+                id: true,
+                isOneTime: true,
                 products: {
                     select: {
                         product: {
@@ -23,20 +26,29 @@ function GetCartTotal(req: NextApiRequest, res: NextApiResponse) {
                     }
                 }
             },
+            orderBy: {
+                createdAt: 'desc'
+            }
         })
-        return cartProducts.reduce((total, cart) => {
+        const total = cartProducts.reduce((total, cart) => {
             return total + cart.products.reduce((total, cartProduct) => {
                 const { price } = cartProduct.product
                 const { quantity } = cartProduct
                 return total + price.toNumber() * quantity
             }, 0)
         }, 0)
+
+        return {
+            total: total,
+            id: cartProducts[0].id,
+            isOneTime: cartProducts[0].isOneTime
+        } as CartData
     }
 
     query()
-        .then(async total => {
+        .then(async result => {
             await prisma.$disconnect()
-            res.status(200).json({total: total})
+            res.status(200).json(result)
         })
         .catch(async err => {
             await prisma.$disconnect()

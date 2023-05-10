@@ -1,9 +1,13 @@
 import Head from 'next/head'
 
-export default function MegamiHead() {
+interface HeadParams {
+    title?: string
+}
+
+export default function MegamiHead({title}: HeadParams) {
     return (
         <Head>
-            <title>MegamiShop</title>
+            <title>{title + " | MegamiShop"}</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>

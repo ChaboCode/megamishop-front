@@ -9,7 +9,7 @@ import svgBox from '@/public/box.svg'
 import HeaderUser from "@/components/HeaderUser";
 import HeaderCart from "@/components/HeaderCart";
 import HeaderDropdown from "@/components/HeaderDropdown";
-import {useState} from "react";
+import { useState } from "react";
 
 export default function Header() {
     const { data: session } = useSession()
@@ -19,7 +19,7 @@ export default function Header() {
         <>
             <header className={styles.header}>
                 <button className={styles['dropdown-button']} onClick={e => setMenuOpen(!isMenuOpen)}>
-                    <Image src={'/menu.png'} alt="Menu" width={40} height={40}/>
+                    <Image src={'/menu.png'} alt="Menu" width={40} height={40} />
                 </button>
                 <div className={styles.headerElements}>
                     <div className={styles.headerIconsLeft}>
@@ -41,13 +41,13 @@ export default function Header() {
                 </div>
             </header>
 
-            <div className={styles['dropdown']} style={{display: isMenuOpen ? 'flex' : 'none'}}>
+            <div className={styles['dropdown']} style={{ display: isMenuOpen ? 'flex' : 'none' }}>
                 <HeaderLink svg={svgBox} text={'Figuras'} />
                 <HeaderLink svg={svgBox} text={'Pokemon'} />
                 <HeaderLink svg={svgBox} text={'Ropa'} />
                 <HeaderLink svg={svgBox} text={'Cartas'} />
-                <HeaderCart dropdown/>
-                <HeaderUser dropdown/>
+                <HeaderCart dropdown />
+                <HeaderUser dropdown />
             </div>
         </>
     )

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import {useSession, signIn} from "next-auth/react";
-import {PropsWithChildren} from "react";
+import { useSession, signIn } from "next-auth/react";
+import { PropsWithChildren } from "react";
 import cart from "@/pages/cart";
 import styles from "@/styles/HeaderUser.module.css"
 
@@ -9,8 +9,8 @@ interface HeaderCartProps {
     dropdown?: boolean
 }
 
-function HeaderCart({dropdown}: HeaderCartProps) {
-    const {data: session} = useSession()
+function HeaderCart({ dropdown }: HeaderCartProps) {
+    const { data: session } = useSession()
 
     const CartPicture = <Image className={styles['cart-picture']} src={'/shopping-cart.png'} alt={'Carrito'} width={50} height={50} />
     const CartComponent = (

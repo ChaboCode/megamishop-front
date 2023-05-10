@@ -30,6 +30,9 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
                         quantity: true
                     }
                 }
+            },
+            orderBy: {
+                createdAt: 'desc'
             }
         })
         if (carts.length > 0) {
