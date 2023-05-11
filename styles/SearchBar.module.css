@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    width: 100%;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    padding: 0 20px;
+
+    background: #1C2221;
+    border: 2px solid #1478A3;
+    border-radius: 30px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    transition: 200ms ease;
+    color: #7e8084;
+    outline: none;
+}
+
+.input:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.input:focus {
+    cursor: text;
+}
+
+.input::placeholder {
+    transition: 200ms ease;
+}
+
+.input:hover::placeholder {
+    color: white;
+}
+
+.search {
+    background: none;
+    border: none;
+    filter: invert();
+}
+
+.search:hover {
+    cursor: pointer;
+}
+

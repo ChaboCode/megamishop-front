@@ -4,7 +4,7 @@ interface HeadParams {
     title?: string
 }
 
-export default function MegamiHead({title}: HeadParams) {
+export default function MegamiHead({ title }: HeadParams) {
     return (
         <Head>
             <title>{title + " | MegamiShop"}</title>

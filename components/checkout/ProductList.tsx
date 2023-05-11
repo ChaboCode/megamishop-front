@@ -8,7 +8,7 @@ interface PremadeParams {
     list: JSX.Element
 }
 
-export function PremadeProductList({list}: PremadeParams) {
+export function PremadeProductList({ list }: PremadeParams) {
     return (
         <div className={styles['container']}>
             {list}
