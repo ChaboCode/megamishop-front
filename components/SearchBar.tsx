@@ -4,9 +4,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-function SearchBar() {
+interface Props {
+    query?: string;
+}
+
+function SearchBar({query}: Props) {
     const router = useRouter()
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState(query || '')
 
     function searchItem() {
         if(search) router.push(`/search/${search}`)
