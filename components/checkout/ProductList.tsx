@@ -8,9 +8,10 @@ interface PremadeParams {
     list: JSX.Element
 }
 
+// FIXME: It should be PreviewProductList, not PremadeProductList
 export function PremadeProductList({ list }: PremadeParams) {
     return (
-        <div className={styles['container']}>
+        <div className={`${styles['container']} ${styles['premade']}`}>
             {list}
         </div>
     )

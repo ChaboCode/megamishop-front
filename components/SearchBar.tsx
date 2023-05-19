@@ -8,12 +8,12 @@ interface Props {
     query?: string;
 }
 
-function SearchBar({query}: Props) {
+function SearchBar({ query }: Props) {
     const router = useRouter()
     const [search, setSearch] = useState(query || '')
 
     function searchItem() {
-        if(search) router.push(`/search/${search}`)
+        if (search) router.push(`/search/${search}`)
     }
 
     function keyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -26,10 +26,10 @@ function SearchBar({query}: Props) {
         <div className={styles['container']}>
             <div className={styles['bar']}>
                 <input className={styles['input']}
-                       placeholder={"¿Qué vamos a buscar hoy...?"}
-                       onChange={e => setSearch(e.target.value)}
-                       onKeyDown={e => keyDown(e)}
-                       value={search} />
+                    placeholder={"¿Qué vamos a buscar hoy...?"}
+                    onChange={e => setSearch(e.target.value)}
+                    onKeyDown={e => keyDown(e)}
+                    value={search} />
                 <button onClick={e => searchItem()} className={styles['search']}>
                     <Image src={'/search.png'} alt={'[Click here to search'} width={20} height={20} />
                 </button>

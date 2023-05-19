@@ -1,11 +1,11 @@
-import {useEffect, useState} from "react";
-import CardView, {CardItemProps} from "@/components/views/CardView";
+import { useEffect, useState } from "react";
+import CardView, { CardItemProps } from "@/components/views/CardView";
 
 interface Props {
     query: string;
 }
 
-function SearchView({query}: Props) {
+function SearchView({ query }: Props) {
     const [cards, setCards] = useState<CardItemProps[]>([])
     const [isLoading, setLoading] = useState(false)
 

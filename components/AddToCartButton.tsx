@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useState } from "react";
 import styles from "@/styles/ProductView.module.css";
 
@@ -14,6 +14,10 @@ function AddToCartButton({ productID }: AddToCartParams) {
     const [cartState, setCartState] = useState("Agregar al carrito")
 
     function addToCart() {
+        if (session == null) {
+            signIn()
+            return
+        }
         setCartState("Agregando...")
         fetch(`/api/cart/${productID}/add`, {
             method: 'post',

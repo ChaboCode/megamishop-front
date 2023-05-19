@@ -20,19 +20,22 @@ function ProductCard({ picture, productID, title, price, quantity }: ProductCard
                 <div className={styles['prices']}>
                     <span className={styles['discount']}>900</span>
                     <span className={styles['unit-price']}>${price}</span>
-                    <div className={styles['quantity-selector']}>
-                        <button
-                            className={`${styles['quantity-button']} ${styles['minus']}`}
-                            onClick={e => { }}
-                        >-</button>
-                        <div className={'quantity'}>{quantity}</div>
-                        <button
-                            className={`${styles['quantity-button']} ${styles['plus']}`}
-                            onClick={e => { }}
-                        >+</button>
-                    </div>
+                    {quantity >= 0 && (
+                        <div className={styles['quantity-selector']}>
+                            <button
+                                className={`${styles['quantity-button']} ${styles['minus']}`}
+                                onClick={e => { }}
+                            >-</button>
+                            <div className={'quantity'}>{quantity}</div>
+                            <button
+                                className={`${styles['quantity-button']} ${styles['plus']}`}
+                                onClick={e => { }}
+                            >+</button>
+                        </div>
+
+                    )}
                 </div>
-                <span></span>
+                <span></span>  {/* Necesary for flex design */}
             </div>
         </div>
     )

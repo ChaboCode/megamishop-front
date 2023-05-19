@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CardView, { CardItemProps } from "@/components/views/CardView";
+import styles from '@/styles/Category.module.css'
 
 function Latest() {
     const [cards, setCards] = useState<CardItemProps[]>([])
@@ -20,7 +21,15 @@ function Latest() {
     if (isLoading) cardView = <p>Loading</p>
     if (cards) cardView = <CardView cards={cards as CardItemProps[]} />
 
-    return cardView
+    return (
+        <>
+        <div className={styles['container']}>
+
+        <p className={styles['title']}>Mercancía fresca</p>
+        </div>
+            {cardView}
+        </>
+    )
 }
 
 export default Latest
