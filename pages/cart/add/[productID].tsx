@@ -8,15 +8,18 @@ import Latest from "@/components/Latest";
 import styles from '@/styles/CartPreview.module.css'
 import stylesProductView from '@/styles/ProductView.module.css'
 import {useSession} from "next-auth/react";
+import {useEffect} from "react";
 
 function AddItemToCart() {
     const router = useRouter()
-    const { data: session } = useSession()
     const { productID } = router.query
+    const { data: session } = useSession()
 
-    if(session == null) {
-        router.push('/')
-    }
+    useEffect(() => {
+        if(session == null) {
+            router.push('/')
+        }
+    }, [router, session])
 
     const item = <ProductCardHelper ids={[parseInt(productID as string)]} />
 
