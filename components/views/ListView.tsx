@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import CardView, { CardItemProps } from "@/components/views/CardView";
 import styles from '@/styles/Category.module.css'
+import { category } from "@prisma/client";
+import api from "@/pages/api";
 
-function Latest() {
+interface Params {
+    apiQuery: category,
+    title: string
+}
+
+function ListView({ apiQuery, title }: Params) {
     const [cards, setCards] = useState<CardItemProps[]>([])
     const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
         setLoading(true)
-        fetch('/api/products/latest/10')
+        fetch(`/api/products/category/${apiQuery}/1`)
             .then(res => res.json())
             .then(data => {
                 setCards(data)
@@ -24,12 +31,11 @@ function Latest() {
     return (
         <>
             <div className={styles['container']}>
-
-                <p className={styles['title']}>Mercancía fresca</p>
+                <p className={styles['title']}>{title}</p>
             </div>
             {cardView}
         </>
     )
 }
 
-export default Latest
+export default ListView

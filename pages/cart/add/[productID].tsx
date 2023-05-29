@@ -7,8 +7,8 @@ import Latest from "@/components/Latest";
 
 import styles from '@/styles/CartPreview.module.css'
 import stylesProductView from '@/styles/ProductView.module.css'
-import {useSession} from "next-auth/react";
-import {useEffect} from "react";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 function AddItemToCart() {
     const router = useRouter()
@@ -16,7 +16,7 @@ function AddItemToCart() {
     const { data: session } = useSession()
 
     useEffect(() => {
-        if(session == null) {
+        if (session == null) {
             router.push('/')
         }
     }, [router, session])

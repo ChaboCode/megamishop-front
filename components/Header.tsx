@@ -23,15 +23,15 @@ export default function Header() {
                 </button>
                 <div className={styles.headerElements}>
                     <div className={styles.headerIconsLeft}>
-                        <HeaderLink svg={svgBox} text={'Figuras'} href={'/figuras'}/>
-                        <HeaderLink svg={svgBox} text={'Pokemon'} href={'/lain'}/>
+                        <HeaderLink svg={svgBox} text={'Figuras'} href={'/category/figures'} />
+                        <HeaderLink svg={svgBox} text={'Pokemon'} href={'/lain'} />
                     </div>
                     <Link href={'/'} className={styles.headerTitle}>
                         MegamiShop
                     </Link>
                     <div className={styles.headerIconsLeft + ' ' + styles.headerIconsRight}>
-                        <HeaderLink svg={svgBox} text={'Ropa'} href={'/lain'}/>
-                        <HeaderLink svg={svgBox} text={'Cartas'} href={'/cartas'} />
+                        <HeaderLink svg={svgBox} text={'Ropa'} href={'/lain'} />
+                        <HeaderLink svg={svgBox} text={'Cartas'} href={'/category/cards'} />
                     </div>
                 </div>
                 <div className={styles.headerAccount}>
@@ -42,10 +42,10 @@ export default function Header() {
             </header>
 
             <div className={styles['dropdown']} style={{ display: isMenuOpen ? 'flex' : 'none' }}>
-                <HeaderLink svg={svgBox} text={'Figuras'} href={'/figuras'}/>
-                <HeaderLink svg={svgBox} text={'Pokemon'} href={'/lain'}/>
-                <HeaderLink svg={svgBox} text={'Ropa'} href={'/lain'}/>
-                <HeaderLink svg={svgBox} text={'Cartas'} href={'/cartas'}/>
+                <HeaderLink svg={svgBox} text={'Figuras'} href={'/figuras'} />
+                <HeaderLink svg={svgBox} text={'Pokemon'} href={'/lain'} />
+                <HeaderLink svg={svgBox} text={'Ropa'} href={'/lain'} />
+                <HeaderLink svg={svgBox} text={'Cartas'} href={'/cartas'} />
                 <HeaderCart dropdown />
                 <HeaderUser dropdown />
             </div>

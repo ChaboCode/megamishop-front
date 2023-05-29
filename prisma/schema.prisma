@@ -13,6 +13,13 @@ model test {
   name String @db.VarChar(50)
 }
 
+enum category {
+  figures
+  cards
+  clothes
+  cosplay
+}
+
 model product {
   id            Int            @id @default(autoincrement())
   name          String         @db.VarChar(100)
@@ -20,6 +27,7 @@ model product {
   description   String         @db.VarChar(500)
   stock         Int
   images        Int
+  category      category       @default(figures)
   createdAt     DateTime       @default(now())
   restockedAt   DateTime       @default(now())
   cart_products cart_product[]
@@ -54,6 +62,7 @@ model purchase {
   id     Int  @id @default(autoincrement())
   cart   cart @relation(fields: [cartID], references: [id])
   cartID Int  @unique
+  total  Decimal
 }
 
 ////////////////

@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    align-items: stretch;
+    width: 1180px;
+    height: 600px;
+    margin: 0 20px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.purchases {
+    padding: 20px;
+}
+
+.purchaseButton {
+    width: 200px;
+    padding: 10px;
+    background: white;
+
+    font-size: 16px;
+    font-family: monospace;
+
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #bfc1c3;
+
+    transition: 200ms ease;
+}
+
+.purchaseButton:hover {
+    box-shadow: 0 0 20px #bbbdc1;
+    background: #e1e9f3;
+    cursor: pointer;
+}
+
+.purchaseButton:active {
+    background: #c4dce6;
+}
+
+.divider {
+    width: 1px;
+    height: 100%;
+    background: black;
+}
