@@ -18,7 +18,7 @@ function HeaderUser({ dropdown }: HeaderUserProps) {
 
     function handleUser() {
         if (!session) signIn()
-        router.push('/cart')
+        router.push('/user')
     }
 
     if (!dropdown) {

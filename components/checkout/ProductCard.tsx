@@ -12,6 +12,11 @@ export interface ProductCardParams {
 }
 
 function ProductCard({ picture, productID, title, price, quantity }: ProductCardParams) {
+
+    async function decreaseQuantity() {
+        await fetch('/api/')
+    }
+
     return (
         <div className={styles['card']}>
             <Image className={styles['picture']} src={picture} alt={'product'} width={200} height={150} />
@@ -24,7 +29,7 @@ function ProductCard({ picture, productID, title, price, quantity }: ProductCard
                         <div className={styles['quantity-selector']}>
                             <button
                                 className={`${styles['quantity-button']} ${styles['minus']}`}
-                                onClick={e => { }}
+                                onClick={e => { decreaseQuantity() }}
                             >-</button>
                             <div className={'quantity'}>{quantity}</div>
                             <button

@@ -18,9 +18,10 @@ function CartPrice() {
     useEffect(() => {
         const uid = session?.user.id
         setLoading(true)
-        fetch(`/api/cart/user/${uid}/total`)
+        fetch(`/api/user/cart/total`)
             .then(res => res.json())
             .then(res => {
+                console.info(res)
                 setTotal(res.total)
                 setLoading(false)
             })

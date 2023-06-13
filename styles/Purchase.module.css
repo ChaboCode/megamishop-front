@@ -9,3 +9,21 @@
     font-size: 32px;
     font-weight: bold;
 }
+
+.ticket {
+    display: flex;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .ticket {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}

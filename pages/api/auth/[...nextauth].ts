@@ -15,13 +15,13 @@ export default NextAuth({
         // ...more providers here
     ],
     callbacks: {
-        jwt: async ({ user, token }) => {
+        async jwt({ user, token }) {
             if (user) {
                 token.uid = user.id;
             }
             return token
         },
-        session: async ({ session, token }) => {
+        async session({ session, token, user }) {
             if (session?.user) {
                 session.user.id = token.uid
             }

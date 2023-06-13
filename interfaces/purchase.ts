@@ -1,5 +1,14 @@
+import { ICartProduct } from "./cart"
+
 export interface IPurchase {
-    date: string,
+    date: Date,
     id: number,
     total?: number
+}
+
+export interface IPurchaseData {
+    products: ICartProduct[]
+    date: Date
+    id: number
+    total: number
 }

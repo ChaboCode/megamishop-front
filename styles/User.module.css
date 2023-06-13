@@ -16,11 +16,14 @@
 }
 
 .purchases {
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
 
 .purchaseButton {
     width: 200px;
+    margin: 10px;
     padding: 10px;
     background: white;
 
@@ -48,4 +51,19 @@
     width: 1px;
     height: 100%;
     background: black;
+}
+
+.purchase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: start;
+
+    width: 100%;
+    margin: 0 24px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
 }

@@ -1,18 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
-import {getServerSession} from "next-auth";
-import authOptions from "@/pages/api/auth/[...nextauth]";
+import { getToken } from "next-auth/jwt";
+import { ICartProduct } from '@/interfaces/cart';
+import { IPurchaseData } from '@/interfaces/purchase';
 
 async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(401).json({message: "You must be logged in"})
+    const token = getToken({ req })
+    if (!token) {
+        res.status(401).json({ message: "You must be logged in" })
         return
     }
 
     const prisma = new PrismaClient()
-    const {purchaseID} = req.query
+    const { purchaseID } = req.query
 
     async function query() {
         return prisma.cart.findMany({
@@ -22,7 +23,14 @@ async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
             select: {
                 products: {
                     select: {
-                        productID: true
+                        product: {
+                            select: {
+                                id: true,
+                                price: true,
+                                name: true,
+                            }
+                        },
+                        quantity: true
                     }
                 },
                 purchaseAt: true,
@@ -36,17 +44,26 @@ async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
             await prisma.$disconnect()
 
             const purchaseResult = result[0]
+            const purchaseProducts: ICartProduct[] = []
+            for (let purchaseProduct of purchaseResult.products) {
+                purchaseProducts.push({
+                    id: purchaseProduct.product.id,
+                    price: purchaseProduct.product.price.toNumber(),
+                    quantity: purchaseProduct.quantity,
+                    title: purchaseProduct.product.name,
+                })
+            }
             const purchase = {
-                productIDs: purchaseResult.products,
+                products: purchaseProducts,
                 date: purchaseResult.purchaseAt,
                 id: purchaseResult.id
-            }
+            } as IPurchaseData
 
             res.status(200).json(purchase)
         })
         .catch(async err => {
             await prisma.$disconnect()
-            res.status(500).end()
+            return res.status(500).end()
         })
 }
 

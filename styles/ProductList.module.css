@@ -120,3 +120,34 @@
 .minus {
     border-radius: 10px 0 0 10px;
 }
+
+@media screen and (max-width: 530px) {
+    .container {
+        width: 93%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .card {
+        height: auto;
+    }
+
+    .picture {
+        height: auto;
+        width: 30%;
+    }
+
+    .prices {
+        flex-direction: column;
+        justify-content: stretch;
+    }
+
+    .prices > * {
+        margin: 5px;
+    }
+
+    .quantity-selector {
+        height: 60px;
+        width: 120px;
+    }
+}

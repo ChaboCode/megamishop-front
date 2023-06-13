@@ -40,3 +40,16 @@
     border-radius: 10px;
 
 }
+
+@media screen and (max-width: 400px) {
+    .container {
+        position: sticky;
+        bottom: 0;
+        width: 70%;
+        height: auto;
+    }
+
+    .checkout-button {
+        margin-top: 50px;
+    }
+}

@@ -11,6 +11,7 @@ function SearchView({ query }: Props) {
 
     useEffect(() => {
         setLoading(true)
+        console.log(query)
         fetch(`/api/products/search/${query}`, {
             method: 'POST',
             body: JSON.stringify({

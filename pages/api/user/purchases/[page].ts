@@ -1,26 +1,27 @@
-import type {NextApiRequest, NextApiResponse} from 'next'
-import {PrismaClient} from '@prisma/client'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { PrismaClient } from '@prisma/client'
 
-import {IPurchase} from "@/interfaces/purchase";
-import {getServerSession} from "next-auth";
-import authOptions from "@/pages/api/auth/[...nextauth]";
+import { IPurchase } from "@/interfaces/purchase";
+import { getToken, JWT } from "next-auth/jwt";
 
 
 async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
-    const session = await getServerSession(req, res, authOptions)
-    if (!session) {
-        res.status(401).json({message: "You must be logged in"})
+    // const session = await getServerSession(req, res, authOptions) as Session
+    const token = await getToken({ req })
+    const { uid } = token as JWT
+
+    // console.log(JSON.stringify(session, null, 2))
+    if (!token) {
+        res.status(401).json({ message: "You must be logged in" })
         return
     }
     const prisma = new PrismaClient()
-    const { userID, page } = req.query
+    const { page } = req.query
 
     async function query() {
         return prisma.cart.findMany({
             where: {
-                user: {
-                    id: userID as string
-                },
+                uid: uid as string,
                 isPurchased: true,
             },
             select: {
@@ -36,12 +37,14 @@ async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
         .then(async result => {
             await prisma.$disconnect()
             if (result.length == 0) {
-                res.status(200).json([])
+                res.status(200).json({ empty: true })
+                res.end()
+                return
             }
             res.status(200).json(result.map(p => {
                 return {
                     id: p.id,
-                    date: p.purchaseAt?.toDateString(),
+                    date: p.purchaseAt as Date,
                 } as IPurchase
             }))
         })

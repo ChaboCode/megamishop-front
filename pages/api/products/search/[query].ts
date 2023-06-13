@@ -1,28 +1,34 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, product } from '@prisma/client'
 import { CardItemProps } from "@/components/views/CardView";
 import { GetProductPictureURL } from "@/components/views/ProductView";
 
 function GetLatestProducts(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient()
-    const { query } = req.body
+    const { query } = req.query
+    console.log(query)
 
     async function doQuery() {
         return prisma.product.findMany({
-            orderBy: {
-                _relevance: {
-                    search: query as string,
-                    fields: ['name'],
-                    sort: 'desc'
+            where: {
+                name: {
+                    contains: `${query}`,
+                    mode: 'insensitive'
                 }
             },
             take: 10
         })
     }
 
+    if(!query) {
+        res.status(400)
+        return
+    }
+
     doQuery()
         .then(async products => {
             await prisma.$disconnect()
+            console.log(products)
             res.status(200).json(products.map(value => {
                 const formattedValue: CardItemProps = {
                     id: value.id,
@@ -36,6 +42,7 @@ function GetLatestProducts(req: NextApiRequest, res: NextApiResponse) {
         })
         .catch(async error => {
             await prisma.$disconnect()
+            console.error(error)
             res.status(500).json([])
             res.end()
         })

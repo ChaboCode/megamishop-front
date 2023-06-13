@@ -7,7 +7,7 @@ function Cart() {
     return (
         <>
             <CheckoutHeader />
-            <div style={{ display: 'flex' }}>
+            <div className={styles['ticket']}>
                 <ProductList />
                 <CartPrice />
             </div>

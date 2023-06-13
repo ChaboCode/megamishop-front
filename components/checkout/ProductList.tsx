@@ -29,7 +29,7 @@ function ProductList() {
             setLoading(false)
             return
         }
-        fetch(`/api/cart/user/${session?.user.id}`)
+        fetch(`/api/user/cart/`)
             .then(res => res.json())
             .then(res => {
                 setCart(res)
