@@ -12,7 +12,6 @@ import HeaderDropdown from "@/components/HeaderDropdown";
 import { useState } from "react";
 
 export default function Header() {
-    const { data: session } = useSession()
     const [isMenuOpen, setMenuOpen] = useState(false)
 
     return (

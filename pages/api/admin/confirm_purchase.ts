@@ -26,7 +26,7 @@ async function ConfirmPurchase(req: NextApiRequest, res: NextApiResponse) {
             where: {
                 id: parseInt(purchaseID),
             },
-            
+
         })
     } catch (err) {
         await prisma.$disconnect()
