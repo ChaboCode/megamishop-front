@@ -20,7 +20,7 @@ function GetLatestProducts(req: NextApiRequest, res: NextApiResponse) {
         })
     }
 
-    if(!query) {
+    if (!query) {
         res.status(400)
         return
     }

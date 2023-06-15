@@ -1,5 +1,8 @@
 .container {
     padding: 10px 10px 10px 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .title {
@@ -8,6 +11,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 32px;
     font-weight: bold;
+}
+
+.subtitle {
+    margin-left: 2rem; 
+    color: gray;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 26px;
 }
 
 .ticket {

@@ -14,7 +14,7 @@ function ConfirmPurchase() {
                 purchaseID: purchaseID,
             }),
         })
-            .then((res) => {console.log(res)})
+            .then((res) => { console.log(res) })
             .catch((err) => {
                 console.log(err)
             })
@@ -26,7 +26,7 @@ function ConfirmPurchase() {
                 placeholder="ID de compra"
                 value={purchaseID}
                 onChange={(e) => setID(e.target.value)}
-            /><br/>
+            /><br />
             <button onClick={() => confirm()}>Confirmar compra</button>
         </>
     )

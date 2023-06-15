@@ -1,5 +1,5 @@
 import { useSession, signIn } from "next-auth/react"
-import Header from "@/components/checkout/header"
+import Header from "@/components/checkout/Header"
 import styles from "@/styles/Purchase.module.css"
 
 function BuyProduct() {

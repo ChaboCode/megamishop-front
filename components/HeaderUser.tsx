@@ -11,7 +11,7 @@ function HeaderUser({ dropdown }: HeaderUserProps) {
     const { data: session } = useSession()
     const router = useRouter()
 
-    let picture = '/cart.png'
+    let picture = '/user.png'
     if (session && session.user) {
         picture = session.user.image as string
     }
@@ -22,13 +22,13 @@ function HeaderUser({ dropdown }: HeaderUserProps) {
     }
 
     if (!dropdown) {
-        return <button className={styles.container} onClick={e => handleUser()}>
+        return <button className={`${styles.container} ${styles.dark} `} onClick={e => handleUser()}>
             <Image src={picture} alt="user" className={styles['picture']} width={40} height={40} />
         </button>
     }
 
     return (
-        <button className={`${styles.container} ${styles['dropdown']}`} onClick={e => handleUser()}>
+        <button className={`${styles.container} ${styles['dropdown']} ${styles.dark}}`} onClick={e => handleUser()}>
             <Image src={picture} alt="user" className={styles['picture']} width={40} height={40} />
         </button>
     )

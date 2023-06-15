@@ -19,15 +19,15 @@ function UserPurchases() {
     useEffect(() => {
         fetch(`/api/user/purchases/${page}`).then(async (response) => {
             const fetchPurchases = (await response.json()) as IPurchase[]
-            
+
             if (fetchPurchases.length == 0) {
                 setSelection(0)
                 setPurchases(
-                        <button className={styles["purchaseButton"]}>
-                            <span className={styles["date"]}>
-                                Aún no hay compras unu
-                            </span>
-                        </button>
+                    <button className={styles["purchaseButton"]}>
+                        <span className={styles["date"]}>
+                            Aún no hay compras unu
+                        </span>
+                    </button>
                 )
                 return
             }
@@ -36,16 +36,16 @@ function UserPurchases() {
                 fetchPurchases.map((p: IPurchase, index: number) => {
                     const date = new Date(p.date.toString())
                     return (
-                            <button key={index}
-                                className={styles["purchaseButton"]}
-                                onClick={(e) => selectPurchase(index)}>
-                                <span className={styles["date"]}>{date.toLocaleDateString('es-MX')}</span>
-                            </button>
+                        <button key={index}
+                            className={styles["purchaseButton"]}
+                            onClick={(e) => selectPurchase(index)}>
+                            <span className={styles["date"]}>{date.toLocaleDateString('es-MX')}</span>
+                        </button>
                     )
                 })
             )
 
-            
+
 
             // Selected purchase
             fetch(`/api/user/purchase/${fetchPurchases[purchaseSelection].id}`).then(

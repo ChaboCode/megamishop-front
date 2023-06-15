@@ -1,4 +1,4 @@
-import Header from "@/components/checkout/header";
+import Header from "@/components/checkout/Header";
 import MegamiHead from "@/components/MegamiHead";
 
 function Checkout() {
