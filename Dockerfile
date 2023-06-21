@@ -4,12 +4,13 @@ FROM node:16-alpine AS builder
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY . .
-RUN yarn install --frozen-lockfile
+# RUN yarn install --frozen-lockfile
 
 # If using npm with a `package-lock.json` comment out above and use below instead
-# RUN npm ci
+RUN npm ci
 
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV MINIO_ENDPOINT 2a09:8280:1::24:2f06:9000
 
 # Add `ARG` instructions below if you need `NEXT_PUBLIC_` variables
 # then put the value on your fly.toml
@@ -35,7 +36,7 @@ COPY --from=builder /app ./
 
 USER nextjs
 
-CMD ["yarn", "start"]
+# CMD ["yarn", "start"]
 
 # If using npm comment out above and use below instead
-# CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start"]
