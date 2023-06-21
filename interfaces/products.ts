@@ -1,3 +1,13 @@
+export interface INewProduct {
+    name: string
+    price: number
+    stock: number
+    image: File
+    imageURL: string
+    desc: string  // Description
+    discount: number
+}
+
 export interface IProductState {
     id: number
     name: string

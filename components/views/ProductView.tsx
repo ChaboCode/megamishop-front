@@ -1,14 +1,17 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from "next/link"
+import Image from "next/image"
 
-import { ProductViewParams } from "@/interfaces/products";
+import { ProductViewParams } from "@/interfaces/products"
 import styles from "@/styles/ProductView.module.css"
-import AddToCartButton from "@/components/AddToCartButton";
-import BuyButton from "@/components/BuyButton";
+import AddToCartButton from "@/components/AddToCartButton"
+import BuyButton from "@/components/BuyButton"
 
+import getConfig from "next/config"
+const { publicRuntimeConfig } = getConfig()
+const { MINIO_ENDPOINT } = publicRuntimeConfig
 
 function GetProductPictureURL(id: number, image: number): string {
-    return `/products/${id}_${image}.png`
+    return `http://${MINIO_ENDPOINT}/web/${id}_${image}.png`
 }
 
 function GetProductPictureURLs(id: number, images: number): string[] {
@@ -20,11 +23,8 @@ function GetProductPictureURLs(id: number, images: number): string[] {
 }
 
 function ProductView({ product }: ProductViewParams) {
-
     if (product == null) {
-        return (
-            <div>Loading...</div>
-        )
+        return <div>Loading...</div>
     }
 
     return (
@@ -35,7 +35,8 @@ function ProductView({ product }: ProductViewParams) {
                     alt={product.name}
                     width={1000}
                     height={1000}
-                    className={styles.pictures} />
+                    className={styles.pictures}
+                />
                 <div className={styles.info}>
                     <div>
                         <span className={styles.title}>{product.name}</span>
