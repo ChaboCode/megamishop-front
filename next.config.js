@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['lh3.googleusercontent.com', process.env.MINIO_ENDPOINT],
+    domains: ['lh3.googleusercontent.com', 'localhost', 'megamishop-minio.flycast'],
   },
   publicRuntimeConfig: {
     MINIO_ENDPOINT: process.env.MINIO_ENDPOINT

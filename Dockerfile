@@ -10,7 +10,7 @@ COPY . .
 RUN npm ci
 
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV MINIO_ENDPOINT 2a09:8280:1::24:2f06:9000
+ENV MINIO_ENDPOINT "megamishop-minio.flycast"
 
 # Add `ARG` instructions below if you need `NEXT_PUBLIC_` variables
 # then put the value on your fly.toml

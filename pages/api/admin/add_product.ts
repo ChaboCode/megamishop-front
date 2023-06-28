@@ -62,8 +62,7 @@ async function AddProduct(req: NextApiRequest, res: NextApiResponse) {
         // 2. Image on server
 
         const minioClient = new Minio.Client({
-            endPoint: env.MINIO_ENDPOINT as string,
-            port: 9000,
+            endPoint: (env.MINIO_ENDPOINT as string),
             useSSL: false,
             accessKey: env.MINIO_USER as string,
             secretKey: env.MINIO_SECRET as string,
