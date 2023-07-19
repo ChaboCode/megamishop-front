@@ -41,7 +41,7 @@ async function AddProduct(req: NextApiRequest, res: NextApiResponse) {
     // Step 2. Create the database entry
 
     // const product = req.body.product as INewProduct
-    const { desc, price, name, stock } = product
+    const { desc, price, name, stock, category } = product
 
     const prisma = new PrismaClient()
     try {
@@ -53,6 +53,7 @@ async function AddProduct(req: NextApiRequest, res: NextApiResponse) {
                 name: name,
                 price: parseInt(price),
                 stock: parseInt(stock),
+                category: category,
             },
             select: {
                 id: true,

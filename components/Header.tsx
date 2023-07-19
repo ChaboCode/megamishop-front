@@ -26,6 +26,7 @@ export default function Header() {
                         <HeaderLink svg={svgBox} text={'Pokemon'} href={'/lain'} />
                     </div>
                     <Link href={'/'} className={styles.headerTitle}>
+                        <Image src={'/logo.svg'} alt={''} width={90} height={65} />
                         MegamiShop
                     </Link>
                     <div className={styles.headerIconsLeft + ' ' + styles.headerIconsRight}>

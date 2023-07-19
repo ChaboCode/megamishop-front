@@ -1,5 +1,6 @@
 import { INewProduct } from "@/interfaces/products"
 import { ChangeEvent, useState } from "react"
+import { category } from "@prisma/client"
 
 function AddProduct() {
     const [image, setImage] = useState<File | string>("")
@@ -9,6 +10,7 @@ function AddProduct() {
     const [stock, setStock] = useState(0)
     const [discount, setDiscount] = useState(0)
     const [createObjectURL, setCreateObjectURL] = useState("")
+    const [selectedCategory, setCategory] = useState("")
 
     const uploadToClient = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -44,17 +46,18 @@ function AddProduct() {
         }
 
         const data = new FormData()
-        data.append('image', image as File)
-        data.append('name', name)
-        data.append('price', price.toString())
-        data.append('desc', description)
-        data.append('stock', stock.toString())
-        data.append('discount', discount.toString())
+        data.append("image", image as File)
+        data.append("name", name)
+        data.append("price", price.toString())
+        data.append("desc", description)
+        data.append("stock", stock.toString())
+        data.append("discount", discount.toString())
+        data.append("category", selectedCategory)
 
         // const response = await fetch("/api/admin/add_product", {
         const response = await fetch("/api/admin/add_product", {
             method: "POST",
-            body: data
+            body: data,
         })
         if (response.status == 401) {
             alert(
@@ -62,8 +65,7 @@ function AddProduct() {
             )
         } else if (response.status !== 200) {
             alert("Ocurrió un error. Contacte al administrador.")
-        }
-        else {
+        } else {
             alert("OK")
         }
     }
@@ -111,6 +113,13 @@ function AddProduct() {
                     placeholder="Precio en oferta"
                 />
                 <br />
+                <select value={selectedCategory}
+                    onChange={(e) => setCategory(e.target.value)}>
+                        <option value={category.figures}>Figuras</option>
+                        <option value={category.cards}>Cartas</option>
+                        <option value={category.clothes}>Ropa</option>
+                        <option value={category.cosplay}>Cosplay</option>
+                </select>
             </div>
         </div>
     )

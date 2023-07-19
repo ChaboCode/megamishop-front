@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-  height: 56px;
 
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -23,6 +22,7 @@
 .headerElements {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  height: 100%;
 }
 
 .headerElements > * {
@@ -41,7 +41,6 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  height: 56px;
   width: 100%;
 
   padding: 0;

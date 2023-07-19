@@ -29,10 +29,6 @@
 
 .input:hover {
     color: white;
-    cursor: pointer;
-}
-
-.input:focus {
     cursor: text;
 }
 
