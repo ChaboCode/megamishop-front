@@ -12,7 +12,6 @@ export interface CardItemProps {
 
 const { publicRuntimeConfig } = getConfig()
 const { MINIO_ENDPOINT } = publicRuntimeConfig
-console.log(MINIO_ENDPOINT)
 
 export function CardItem({ id, image, title, price }: CardItemProps) {
     return (

@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { ICart } from "@/interfaces/cart";
 import { useSession } from "next-auth/react";
 
+import getConfig from "next/config"
+const { publicRuntimeConfig } = getConfig()
+const { MINIO_ENDPOINT } = publicRuntimeConfig
+
 interface PremadeParams {
     list: JSX.Element
 }
@@ -43,7 +47,7 @@ function ProductList() {
     } else {
         list = <>{cart?.products.map(product => {
             const { id, title, price, quantity } = product
-            return <ProductCard key={id} picture={`/products/${id}_0.png`} productID={id} title={title}
+            return <ProductCard key={id} picture={`http://${MINIO_ENDPOINT}/web/${id}_0.png`} productID={id} title={title}
                 price={price} quantity={quantity} />
         })}</>
     }
