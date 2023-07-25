@@ -29,7 +29,7 @@ async function AddProduct(req: NextApiRequest, res: NextApiResponse) {
 
     if (data.err) {
         res.status(500)
-        return 
+        return
     }
 
     const product = data.fields
@@ -70,15 +70,15 @@ async function AddProduct(req: NextApiRequest, res: NextApiResponse) {
         })
 
         const uploadStatus = await minioClient.fPutObject('web', `${newProduct.id}_0.png`, data.files?.image.filepath)
-        
+
 
         await prisma.$disconnect()
-        res.status(200).json({id: newProduct.id})
+        res.status(200).json({ id: newProduct.id })
         res.end()
     } catch (err) {
         await prisma.$disconnect()
         console.log(err)
-        res.status(500).json({error: err})
+        res.status(500).json({ error: err })
         res.end()
     }
 }
@@ -86,7 +86,7 @@ async function AddProduct(req: NextApiRequest, res: NextApiResponse) {
 export default AddProduct
 
 export const config = {
-  api: {
-    bodyParser: false
-  }
+    api: {
+        bodyParser: false
+    }
 }

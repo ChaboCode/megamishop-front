@@ -72,12 +72,9 @@
 }
 
 .headerIcon {
-  height: 35px;
-  width: 35px;
-
-
+  margin-right: 10px;
   transition: ease 0.3s;
-  filter: grayscale(1) opacity(0.3);
+  filter: opacity(0.3) invert();
 }
 
 .headerIconLink:hover {
@@ -86,7 +83,7 @@
 }
 
 .headerIconLink:hover > .headerIcon{
-  filter: none;
+  filter: invert();
 }
 
 .headerIconLink:hover > .headerLinkText {

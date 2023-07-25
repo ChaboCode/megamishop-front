@@ -6,7 +6,7 @@ import Link from "next/link"
 function AdminHome() {
     return (
         <>
-            <Link href={"/"}>Home</Link><br/>
+            <Link href={"/"}>Home</Link><br />
             <Link href={"/admin/confirm_purchase"}>Confirm purchase</Link>
             <Link href={"/admin/add_product"}>Add product</Link>
         </>

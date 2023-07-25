@@ -39,7 +39,7 @@ async function MinioTest(req: NextApiRequest, res: NextApiResponse) {
 export default MinioTest
 
 export const config = {
-  api: {
-    bodyParser: false
-  }
+    api: {
+        bodyParser: false
+    }
 }

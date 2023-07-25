@@ -13,14 +13,14 @@ function HeaderUser({ dropdown }: HeaderUserProps) {
     const picture = session?.user.image as string
 
     if (!dropdown) {
-        return <button className={styles.container} onClick={e => signOut({callbackUrl: '/'})}>
+        return <button className={styles.container} onClick={e => signOut({ callbackUrl: '/' })}>
             <span className={styles['text']}>Cerrar sesión</span>
             <Image src={picture} alt="user" className={styles['picture']} width={40} height={40} />
         </button>
     }
 
     return (
-        <button className={`${styles.container} ${styles['dropdown']}`} onClick={e => signOut({callbackUrl: '/'})}>
+        <button className={`${styles.container} ${styles['dropdown']}`} onClick={e => signOut({ callbackUrl: '/' })}>
             <span className={styles['text']}>Cerrar sesión</span>
             <Image src={picture} alt="user" className={styles['picture']} width={40} height={40} />
         </button>

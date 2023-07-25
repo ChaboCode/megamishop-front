@@ -115,10 +115,10 @@ function AddProduct() {
                 <br />
                 <select value={selectedCategory}
                     onChange={(e) => setCategory(e.target.value)}>
-                        <option value={category.figures}>Figuras</option>
-                        <option value={category.cards}>Cartas</option>
-                        <option value={category.clothes}>Ropa</option>
-                        <option value={category.cosplay}>Cosplay</option>
+                    <option value={category.figures}>Figuras</option>
+                    <option value={category.cards}>Cartas</option>
+                    <option value={category.clothes}>Ropa</option>
+                    <option value={category.cosplay}>Cosplay</option>
                 </select>
             </div>
         </div>
