@@ -58,12 +58,13 @@ export default function Header() {
                     </div>
                     <Link href={"/"} className={styles.headerTitle}>
                         <Image
+                            className={styles.headerBrandIcon}
                             src={"/logo.svg"}
                             alt={""}
                             width={90}
                             height={65}
                         />
-                        <p className={yoruka.className}>MegamiShop</p>
+                        <span className={yoruka.className}>MegamiShop</span>
                     </Link>
                     <div
                         className={
