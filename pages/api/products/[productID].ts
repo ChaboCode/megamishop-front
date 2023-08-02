@@ -26,6 +26,7 @@ function LoadProductById(req: NextApiRequest, res: NextApiResponse) {
                     images: products[0].images,
                     desc: products[0].description,
                     rarity: products[0].rarity,
+                    colors: products[0].colors,
                 }
                 res.status(200).json(product)
             }

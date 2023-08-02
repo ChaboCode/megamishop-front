@@ -7,6 +7,7 @@ export interface INewProduct {
     desc: string  // Description
     discount: number
     rarity: string
+    colors: string[] | undefined
 }
 
 export interface IProductState {
@@ -17,6 +18,7 @@ export interface IProductState {
     images: number
     desc: string  // Description
     rarity: string
+    colors: string[] | undefined
     //TODO: Add discount field
 }
 

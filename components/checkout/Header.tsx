@@ -3,20 +3,11 @@ import Link from "next/link"
 import Image from "next/image"
 import HeaderUser from "./HeaderUser"
 
+import { yoruka } from "@/types/fonts"
+
 interface Params {
     subtitle?: string
 }
-
-import localFont from "next/font/local"
-const yoruka = localFont({
-    src: [
-        {
-            path: "../../public/yoruka.otf",
-            weight: "600",
-        },
-    ],
-    display: "swap",
-})
 
 function Header({ subtitle }: Params) {
     return (

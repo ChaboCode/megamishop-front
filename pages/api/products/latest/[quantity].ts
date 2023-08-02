@@ -26,6 +26,7 @@ function GetLatestProducts(req: NextApiRequest, res: NextApiResponse) {
                     price: value.price.toNumber(),
                     title: value.name,
                     rarity: value.rarity,
+                    colors: value.colors,
                 }
                 return formattedValue
             }))

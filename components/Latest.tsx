@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import CardView, { CardItemProps } from "@/components/views/CardView";
 import styles from '@/styles/Category.module.css'
 
+import { yoruka } from "@/types/fonts";
+
 function Latest() {
     const [cards, setCards] = useState<CardItemProps[]>([])
     const [isLoading, setLoading] = useState(false)
@@ -25,7 +27,7 @@ function Latest() {
         <>
             <div className={styles['container']}>
 
-                <p className={styles['title']}>Mercancía fresca</p>
+                <p className={`${styles['title']} ${yoruka.className}`}>Mercancia fresca</p>
             </div>
             {cardView}
         </>

@@ -25,7 +25,9 @@ function GetProductsByCategory(req: NextApiRequest, res: NextApiResponse) {
                     id: value.id,
                     image: GetProductPictureURL(value.id, 0),
                     price: value.price.toNumber(),
-                    title: value.name
+                    title: value.name,
+                    rarity: value.rarity,
+                    colors: value.colors
                 }
                 return formattedValue
             }))
