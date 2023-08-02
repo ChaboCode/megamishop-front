@@ -20,6 +20,13 @@ enum category {
   cosplay
 }
 
+enum rarity {
+  r
+  sr
+  ssr
+  ur
+}
+
 model product {
   id            Int            @id @default(autoincrement())
   name          String         @db.VarChar(100)
@@ -28,6 +35,8 @@ model product {
   stock         Int
   images        Int
   category      category       @default(figures)
+  rarity        rarity         @default(r)
+  colors        String[]       @default([])
   createdAt     DateTime       @default(now())
   restockedAt   DateTime       @default(now())
   cart_products cart_product[]

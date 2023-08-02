@@ -6,6 +6,7 @@ export interface INewProduct {
     imageURL: string
     desc: string  // Description
     discount: number
+    rarity: string
 }
 
 export interface IProductState {
@@ -15,6 +16,7 @@ export interface IProductState {
     stock: number
     images: number
     desc: string  // Description
+    rarity: string
     //TODO: Add discount field
 }
 

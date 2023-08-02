@@ -8,14 +8,15 @@ export interface CardItemProps {
     image: string
     title: string
     price: number
+    rarity: string
 }
 
 const { publicRuntimeConfig } = getConfig()
 const { MINIO_ENDPOINT } = publicRuntimeConfig
 
-export function CardItem({ id, image, title, price }: CardItemProps) {
+export function CardItem({ id, image, title, price, rarity }: CardItemProps) {
     return (
-        <Link href={`/products/${id}`} className={styles["card-item"]}>
+        <Link href={`/products/${id}`} className={`${styles["card-item"]} ${styles[rarity]}`}>
             <Image
                 className={styles["card-item_img"]}
                 src={`http://${MINIO_ENDPOINT}/web/${id}_0.png`}
@@ -43,6 +44,7 @@ export default function CardView({ cards }: CardViewProps) {
                 image={card.image}
                 title={card.title}
                 price={card.price}
+                rarity={card.rarity}
             />
         )
     })

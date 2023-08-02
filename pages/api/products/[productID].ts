@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, rarity } from '@prisma/client'
 
 import { IProductState } from "@/interfaces/products";
 
@@ -24,7 +24,8 @@ function LoadProductById(req: NextApiRequest, res: NextApiResponse) {
                     price: products[0].price.toNumber(),
                     stock: products[0].stock as number,
                     images: products[0].images,
-                    desc: products[0].description
+                    desc: products[0].description,
+                    rarity: products[0].rarity,
                 }
                 res.status(200).json(product)
             }
