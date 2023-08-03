@@ -15,6 +15,8 @@ const loadingProduct: IProductState = {
     desc: 'Please wait a bit',
     name: 'Loading...',
     id: -1,
+    colors: [],
+    rarity: 'r'
 }
 
 function ProductPage() {

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import styles from "@/styles/HomeBanner.module.css"
 
 export default function HomeBanner() {
@@ -8,7 +9,8 @@ export default function HomeBanner() {
                     className={`${styles.homeBannerSwitcher} ${styles.switcherLeft}`}
                 />
                 <div className={styles.homeBannerDisplay}>
-                    <div className={styles.homeBannerSlider}></div>
+                    <Image className={styles.homeBannerBackground} src={'/tojo.png'} alt="epic banner" width={600} height={300} />
+                    <Image className={styles.homeBannerSlider} src={'/tojo.png'} alt="epic banner" width={600} height={300} />
                 </div>
                 <button
                     className={`${styles.homeBannerSwitcher} ${styles.switcherRight}`}

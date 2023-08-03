@@ -25,7 +25,7 @@
     text-decoration: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    --card-bg: linear-gradient(191deg, rgba(3,2,19,1) 0%, rgba(20,38,74,1) 100%);
+    --card-bg: linear-gradient(191deg, rgba(3,2,19,1) 0%, #411729 100%);
     background: var(--card-bg);
     border-radius: 10px;
     box-shadow: 0 5px 5px #7e8084;

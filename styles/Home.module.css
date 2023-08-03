@@ -1,4 +1,6 @@
 .header {
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 80px;
 
@@ -71,11 +73,11 @@
   filter: opacity(0.3);
   transition: ease 0.3s;
 }
-name
+
 .headerIcon {
   margin-right: 10px;
   transition: ease 0.3s;
-  filter: opacity(0.3) invert();
+  filter: opacity(0.3);
 }
 
 .headerIconLink:hover {
@@ -84,7 +86,7 @@ name
 }
 
 .headerIconLink:hover > .headerIcon{
-  filter: invert();
+  filter: none;
 }
 
 .headerIconLink:hover > .headerLinkText {

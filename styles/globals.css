@@ -1,20 +1,19 @@
 :root {
-  --background: rgba(255,255,255,1);
-  --accent-blue: #5BC0EB;
-  --accent-yellow: #FDE74C;
-  --accent-green: #9BC53D;
-  --accent-red: #C3423F;
-  --black-light: #404E4D;
-  --black: #1C2221;
-  --black-dark: #121616;
+    --background: rgba(255, 255, 255, 1);
+    --accent-blue: #5bc0eb;
+    --accent-yellow: #fde74c;
+    --accent-green: #9bc53d;
+    --accent-red: #c3423f;
+    --black-light: #404e4d;
+    --black: #1c2221;
+    --black-dark: #121616;
 
-  --button-blue: #25ABE4;
-  --button-blue-hover: #1478A3;
+    --button: #ffa7cf;
+    --button-hover: #b77e99;
 
-  margin: 0;
-
+    margin: 0;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }

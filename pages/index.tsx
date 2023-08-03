@@ -5,6 +5,7 @@ import MegamiNavBar from "@/components/MegamiNavBar"
 import HomeBanner from "@/components/HomeBanner";
 import Latest from "@/components/Latest";
 import SearchBar from "@/components/SearchBar";
+import Footer from "@/components/Footer";
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
             <HomeBanner />
             <SearchBar />
             <Latest />
+            <Footer />
         </>
     )
 }

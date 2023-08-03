@@ -66,14 +66,14 @@
   font-weight: bold;
 
   border-radius: 10px;
-  background-color: var(--button-blue);
+  background-color: var(--button);
   
   transition: 200ms ease;
 }
 
 .card-item_buy:hover {
   color: white;
-  background-color: var(--button-blue-hover);
+  background-color: var(--button-hover);
 }
 
 .card-item:hover {
@@ -116,5 +116,38 @@
 }
 
 .sr {
-  border: none;
+  border: 5px solid black;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to bottom, rgb(184, 179, 183), #f091ba);
+  /* border-left: 0;
+  border-top: 0;
+  border-bottom: 0; */
 }
+
+.sr > .card-item_buy {
+  background: #f091ba;
+  transition: 100ms ease;
+}
+
+.sr > .card-item_buy:hover {
+  background: rgb(189, 86, 158);
+}
+
+.ssr {
+  border: 5px solid black;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to bottom, rgb(231, 198, 50), #f091ba);
+  /* border-left: 0;
+  border-top: 0;
+  border-bottom: 0; */
+}
+
+.ssr > .card-item_buy {
+  background: #f091ba;
+  transition: 100ms ease;
+}
+
+.ssr > .card-item_buy:hover {
+  background: rgb(211, 164, 35);
+}
+

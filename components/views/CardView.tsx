@@ -8,7 +8,8 @@ export interface CardItemProps {
     image: string
     title: string
     price: number
-    rarity: string
+    rarity: string,
+    colors: string[]
 }
 
 const { publicRuntimeConfig } = getConfig()
@@ -45,6 +46,7 @@ export default function CardView({ cards }: CardViewProps) {
                 title={card.title}
                 price={card.price}
                 rarity={card.rarity}
+                colors={card.colors}
             />
         )
     })
