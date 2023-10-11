@@ -37,7 +37,7 @@ async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
         .then(async result => {
             await prisma.$disconnect()
             if (result.length == 0) {
-                res.status(200).json({ empty: true })
+                res.status(200).json([])
                 res.end()
                 return
             }

@@ -20,6 +20,8 @@ function UserPurchases() {
         fetch(`/api/user/purchases/${page}`).then(async (response) => {
             const fetchPurchases = (await response.json()) as IPurchase[]
 
+            console.info(fetchPurchases)
+
             if (fetchPurchases.length == 0) {
                 setSelection(0)
                 setPurchases(
@@ -29,6 +31,7 @@ function UserPurchases() {
                         </span>
                     </button>
                 )
+                setPurchase(<></>)
                 return
             }
 
