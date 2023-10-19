@@ -1,6 +1,7 @@
 import styles from "@/styles/ProductList.module.css"
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export interface ProductCardParams {
     picture: string,
@@ -13,8 +14,14 @@ export interface ProductCardParams {
 
 function ProductCard({ picture, productID, title, price, quantity }: ProductCardParams) {
 
+    const [deleteStatus, setDeleteStatus] = useState("Eliminar")
+
     async function decreaseQuantity() {
         await fetch('/api/')
+    }
+
+    async function askForDeleteItem(productID: number) {
+        setDeleteStatus("Eliminando...")
     }
 
     return (
@@ -40,7 +47,7 @@ function ProductCard({ picture, productID, title, price, quantity }: ProductCard
 
                     )}
                 </div>
-                <span></span>  {/* Necesary for flex design */}
+                <button className={styles['delete']} onClick={e => askForDeleteItem(productID)}>{deleteStatus}</button>  {/* Necesary for flex design */}
             </div>
         </div>
     )

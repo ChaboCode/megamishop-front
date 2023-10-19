@@ -47,7 +47,7 @@ async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
             const purchaseProducts: ICartProduct[] = []
             for (let purchaseProduct of purchaseResult.products) {
                 purchaseProducts.push({
-                    id: purchaseProduct.product.id,
+                    productID: purchaseProduct.product.id,
                     price: purchaseProduct.product.price.toNumber(),
                     quantity: purchaseProduct.quantity,
                     title: purchaseProduct.product.name,

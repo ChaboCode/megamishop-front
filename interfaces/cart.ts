@@ -1,5 +1,6 @@
 export interface ICartProduct {
-    id: number,
+    cartProductId: number,
+    productID: number,
     title: string,
     price: number,
     discount?: number,

@@ -46,7 +46,7 @@ function ProductList() {
         list = <span>Loading cart...</span>
     } else {
         list = <>{cart?.products.map(product => {
-            const { id, title, price, quantity } = product
+            const { productID: id, title, price, quantity } = product
             return <ProductCard key={id} picture={`http://${MINIO_ENDPOINT}/web/${id}_0.png`} productID={id} title={title}
                 price={price} quantity={quantity} />
         })}</>

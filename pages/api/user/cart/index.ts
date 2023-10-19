@@ -19,6 +19,7 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
             select: {
                 products: {
                     select: {
+                        id: true, 
                         product: {
                             select: {
                                 id: true,
@@ -39,7 +40,8 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
             const cart: ICart = {
                 products: carts[0].products.map(cartProduct => {
                     const product: ICartProduct = {
-                        id: cartProduct.product.id,
+                        cartProductId: cartProduct.id,
+                        productID: cartProduct.product.id,
                         title: cartProduct.product.name,
                         price: cartProduct.product.price.toNumber(),
                         quantity: cartProduct.quantity,

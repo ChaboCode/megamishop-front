@@ -57,7 +57,7 @@ function UserPurchases() {
                         (await response.json()) as IPurchaseData
                     setPurchase(
                         purchaseData.products.map((product) => {
-                            const { price, id, quantity, title, discount } =
+                            const { price, productID: id, quantity, title, discount } =
                                 product
                             return (
                                 <ProductCard
