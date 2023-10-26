@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient, Prisma } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { ICart, ICartProduct } from "@/interfaces/cart";
 
 function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
@@ -19,7 +19,7 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
             select: {
                 products: {
                     select: {
-                        id: true, 
+                        id: true,
                         product: {
                             select: {
                                 id: true,
@@ -37,6 +37,12 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
             }
         })
         if (carts.length > 0) {
+            const total = carts[0].products.reduce((total, cartProduct) => {
+                const { price } = cartProduct.product
+                const { quantity } = cartProduct
+                return total + price.toNumber() * quantity
+            }, 0)
+
             const cart: ICart = {
                 products: carts[0].products.map(cartProduct => {
                     const product: ICartProduct = {
@@ -47,10 +53,17 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
                         quantity: cartProduct.quantity,
                     }
                     return product
-                })
+                }),
+                total: total,
+                success: true,
             }
+
             return cart
         }
+
+        return {
+            success: false
+        } as ServerResponse
     }
 
     query()

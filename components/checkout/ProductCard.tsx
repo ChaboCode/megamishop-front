@@ -2,6 +2,8 @@ import styles from "@/styles/ProductList.module.css"
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleUpdate } from "@/redux/checkoutSlice";
 
 export interface ProductCardParams {
     picture: string,
@@ -10,9 +12,10 @@ export interface ProductCardParams {
     price: number,
     discount?: number,
     quantity: number,
+    refresh?: () => any, 
 }
 
-function ProductCard({ picture, productID, title, price, quantity }: ProductCardParams) {
+function ProductCard({ picture, productID, title, price, quantity, refresh }: ProductCardParams) {
 
     const [deleteStatus, setDeleteStatus] = useState("Eliminar")
 
@@ -22,6 +25,14 @@ function ProductCard({ picture, productID, title, price, quantity }: ProductCard
 
     async function askForDeleteItem(productID: number) {
         setDeleteStatus("Eliminando...")
+        const res = await fetch(`/api/cart/${productID}/delete`)
+        const result = await res.json() as ServerResponse
+
+        if (!result.success) {
+            alert("No se pudo eliminar el artículo. Disculpe las molestias")
+        }
+
+        toggleUpdate()
     }
 
     return (
@@ -47,7 +58,7 @@ function ProductCard({ picture, productID, title, price, quantity }: ProductCard
 
                     )}
                 </div>
-                <button className={styles['delete']} onClick={e => askForDeleteItem(productID)}>{deleteStatus}</button>  {/* Necesary for flex design */}
+                {refresh ? (<button className={styles['delete']} onClick={e => askForDeleteItem(productID)}>{deleteStatus}</button>) : (<span />)}  {/* Necesary for flex design */}
             </div>
         </div>
     )

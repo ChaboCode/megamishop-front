@@ -7,6 +7,7 @@ export interface ICartProduct {
     quantity: number,
 }
 
-export interface ICart {
+export interface ICart extends ServerResponse {
     products: ICartProduct[]
+    total: number
 }

@@ -1,42 +1,17 @@
 import styles from "@/styles/CartPrice.module.css"
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useAppSelector } from "@/redux/checkoutSlice";
 
-export interface CartData {
+export interface CartData extends ServerResponse {
     id: number,
     total: number,
     isOneTime: boolean,
 }
 
+
 function CartPrice() {
-    const { data: session } = useSession()
-
-    const [total, setTotal] = useState(69)
-    const [isLoading, setLoading] = useState(false)
-
-    useEffect(() => {
-        const uid = session?.user.id
-        setLoading(true)
-        fetch(`/api/user/cart/total`)
-            .then(res => res.json())
-            .then(res => {
-                console.info(res)
-                setTotal(res.total)
-                setLoading(false)
-            })
-    }, [session?.user.id])
-
-    useEffect(() => {
-        const uid = session?.user.id
-    })
-
-    let price: JSX.Element
-    if (isLoading) {
-        price = <span>Loading...</span>
-    } else {
-        price = <span className={styles['total']}>${total}.00</span>
-    }
+    const total = useAppSelector(state => state.checkout.cart?.total)
+    let price = <span className={styles['total']}>${total}.00</span>
 
     return (
         <div className={styles['container']}>

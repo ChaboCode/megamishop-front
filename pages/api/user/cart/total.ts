@@ -4,6 +4,7 @@ import { CartData } from "@/components/checkout/CartPrice";
 
 import { getServerSession } from "next-auth";
 import authOptions from "@/pages/api/auth/[...nextauth]";
+import { getSession } from 'next-auth/react';
 
 async function GetCartTotal(req: NextApiRequest, res: NextApiResponse) {
     const prisma = new PrismaClient()
@@ -12,13 +13,12 @@ async function GetCartTotal(req: NextApiRequest, res: NextApiResponse) {
         res.status(401).json({ message: "You must be logged in" })
         return
     }
-
-    console.log(session)
+    const uid = (await getSession({ req: req }))?.user.id
 
     async function query() {
         const cartProducts = await prisma.cart.findMany({
             where: {
-                // uid: uid as string,
+                uid: uid as string,
                 isPurchased: false
             },
             select: {
@@ -39,6 +39,13 @@ async function GetCartTotal(req: NextApiRequest, res: NextApiResponse) {
                 createdAt: 'desc'
             }
         })
+
+        if (cartProducts.length == 0) {
+            return {
+                success: false
+            } as ServerResponse
+        }
+
         const total = cartProducts.reduce((total, cart) => {
             return total + cart.products.reduce((total, cartProduct) => {
                 const { price } = cartProduct.product
@@ -50,13 +57,15 @@ async function GetCartTotal(req: NextApiRequest, res: NextApiResponse) {
         return {
             total: total,
             id: cartProducts[0].id,
-            isOneTime: cartProducts[0].isOneTime
+            isOneTime: cartProducts[0].isOneTime,
+            success: true
         } as CartData
     }
 
     query()
         .then(async result => {
             await prisma.$disconnect()
+            console.log(result)
             res.status(200).json(result)
         })
         .catch(async err => {
