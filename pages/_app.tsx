@@ -6,11 +6,11 @@ import store from '@/redux/store'
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <Provider store={store}>        
-            <SessionProvider session={pageProps.session}>
+        <SessionProvider session={pageProps.session}>
+            <Provider store={store}>
                 <Component {...pageProps} />
-            </SessionProvider>
-        </Provider>
+            </Provider>
+        </SessionProvider>
 
     )
 }

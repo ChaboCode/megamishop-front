@@ -51,6 +51,7 @@ async function GetPurchases(req: NextApiRequest, res: NextApiResponse) {
                     price: purchaseProduct.product.price.toNumber(),
                     quantity: purchaseProduct.quantity,
                     title: purchaseProduct.product.name,
+                    cartProductId: -1
                 })
             }
             const purchase = {
