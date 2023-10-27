@@ -7,13 +7,11 @@ import Nextauth from '../api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 
 import { useAppDispatch } from '@/redux/checkoutSlice';
-import { update } from '@/redux/checkoutSlice';
+import { fetchCart } from '@/redux/checkoutSlice';
 
 function Cart() {
     const dispatch = useAppDispatch()
-
-    dispatch(update())
-
+    fetchCart(dispatch)
     return (
         <>
             <CheckoutHeader />

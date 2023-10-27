@@ -2,8 +2,7 @@ import styles from "@/styles/ProductList.module.css"
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleUpdate } from "@/redux/checkoutSlice";
+import { fetchCart, useAppDispatch } from "@/redux/checkoutSlice";
 
 export interface ProductCardParams {
     picture: string,
@@ -12,12 +11,13 @@ export interface ProductCardParams {
     price: number,
     discount?: number,
     quantity: number,
-    refresh?: () => any, 
+    allowDelete?: boolean,
 }
 
-function ProductCard({ picture, productID, title, price, quantity, refresh }: ProductCardParams) {
+function ProductCard({ picture, productID, title, price, quantity, allowDelete: refresh }: ProductCardParams) {
 
     const [deleteStatus, setDeleteStatus] = useState("Eliminar")
+    const dispatch = useAppDispatch()
 
     async function decreaseQuantity() {
         await fetch('/api/')
@@ -32,7 +32,7 @@ function ProductCard({ picture, productID, title, price, quantity, refresh }: Pr
             alert("No se pudo eliminar el artículo. Disculpe las molestias")
         }
 
-        toggleUpdate()
+        fetchCart(dispatch)
     }
 
     return (

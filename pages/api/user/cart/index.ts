@@ -34,7 +34,8 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
             },
             orderBy: {
                 createdAt: 'desc'
-            }
+            },
+            take: 1,
         })
         if (carts.length > 0) {
             const total = carts[0].products.reduce((total, cartProduct) => {
@@ -75,6 +76,9 @@ function GetUserCart(req: NextApiRequest, res: NextApiResponse) {
             await prisma.$disconnect()
             res.status(500)
             console.error(err)
+        })
+        .finally(() => {
+            res.end()
         })
 }
 

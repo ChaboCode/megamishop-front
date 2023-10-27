@@ -33,11 +33,11 @@ function ProductList() {
     }, [session?.user.id])
 
     let list: JSX.Element
-        list = <>{cart?.products.map(product => {
-            const { productID: id, title, price, quantity } = product
-            return <ProductCard key={id} picture={`http://${MINIO_ENDPOINT}/web/${id}_0.png`} productID={id} title={title}
-                price={price} quantity={quantity} />
-        })}</>
+    list = <>{cart?.products.map(product => {
+        const { productID: id, title, price, quantity } = product
+        return <ProductCard key={id} picture={`http://${MINIO_ENDPOINT}/web/${id}_0.png`} productID={id} title={title}
+            price={price} quantity={quantity} allowDelete={true} />
+    })}</>
 
     return (
         <div className={styles['container']}>
