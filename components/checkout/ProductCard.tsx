@@ -7,6 +7,7 @@ import { fetchCart, useAppDispatch } from "@/redux/checkoutSlice";
 export interface ProductCardParams {
     picture: string,
     productID: number,
+    cartProductID?: number,
     title: string,
     price: number,
     discount?: number,
@@ -14,13 +15,34 @@ export interface ProductCardParams {
     allowDelete?: boolean,
 }
 
-function ProductCard({ picture, productID, title, price, quantity, allowDelete: refresh }: ProductCardParams) {
+function ProductCard({ picture, productID, cartProductID, title, price, quantity, allowDelete }: ProductCardParams) {
 
     const [deleteStatus, setDeleteStatus] = useState("Eliminar")
     const dispatch = useAppDispatch()
 
+    async function setQuantity(quantity: number) {
+        const body = new URLSearchParams({
+            cartProductID: cartProductID!.toString(),
+            quantity: quantity.toString()  // FIXME
+        })
+        const result = await fetch(`/api/user/cart/${productID}/setQuantity`, {
+            method: "POST",
+            body: body
+        })
+
+        if (!result.ok) {
+            alert("Ocurrió un error actualizando el carrito. Contacte al administrador.")
+            return
+        }
+        fetchCart(dispatch)
+    }
+
     async function decreaseQuantity() {
-        await fetch('/api/')
+        setQuantity(quantity - 1)
+    }
+
+    async function increaseQuantity() {
+        setQuantity(quantity + 1)
     }
 
     async function askForDeleteItem(productID: number) {
@@ -52,13 +74,13 @@ function ProductCard({ picture, productID, title, price, quantity, allowDelete: 
                             <div className={'quantity'}>{quantity}</div>
                             <button
                                 className={`${styles['quantity-button']} ${styles['plus']}`}
-                                onClick={e => { }}
+                                onClick={e => { increaseQuantity() }}
                             >+</button>
                         </div>
 
                     )}
                 </div>
-                {refresh ? (<button className={styles['delete']} onClick={e => askForDeleteItem(productID)}>{deleteStatus}</button>) : (<span />)}  {/* Necesary for flex design */}
+                {allowDelete ? (<button className={styles['delete']} onClick={e => askForDeleteItem(productID)}>{deleteStatus}</button>) : (<span />)}  {/* Necesary for flex design */}
             </div>
         </div>
     )

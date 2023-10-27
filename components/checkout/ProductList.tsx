@@ -32,10 +32,15 @@ function ProductList() {
         }
     }, [session?.user.id])
 
+    if(!cart?.products) {
+        return  <div className={styles['container']}></div>
+    }
+
     let list: JSX.Element
     list = <>{cart?.products.map(product => {
-        const { productID: id, title, price, quantity } = product
-        return <ProductCard key={id} picture={`http://${MINIO_ENDPOINT}/web/${id}_0.png`} productID={id} title={title}
+        const { productID: id, title, price, quantity, cartProductId } = product
+        return <ProductCard key={id} picture={`http://${MINIO_ENDPOINT}/web/${id}_0.png`}
+            productID={id} cartProductID={cartProductId} title={title}
             price={price} quantity={quantity} allowDelete={true} />
     })}</>
 
