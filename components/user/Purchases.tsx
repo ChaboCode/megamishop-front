@@ -68,6 +68,7 @@ function UserPurchases() {
                                     title={title}
                                     discount={discount}
                                     picture={GetProductPictureURL(id, 0)}
+                                    noSelector
                                 />
                             )
                         })

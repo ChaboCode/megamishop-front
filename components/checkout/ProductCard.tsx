@@ -12,10 +12,11 @@ export interface ProductCardParams {
     price: number,
     discount?: number,
     quantity: number,
+    noSelector?: boolean
     allowDelete?: boolean,
 }
 
-function ProductCard({ picture, productID, cartProductID, title, price, quantity, allowDelete }: ProductCardParams) {
+function ProductCard({ picture, productID, cartProductID, title, price, quantity, allowDelete, noSelector }: ProductCardParams) {
 
     const [deleteStatus, setDeleteStatus] = useState("Eliminar")
     const dispatch = useAppDispatch()
@@ -65,7 +66,7 @@ function ProductCard({ picture, productID, cartProductID, title, price, quantity
                 <div className={styles['prices']}>
                     <span className={styles['discount']}>900</span>
                     <span className={styles['unit-price']}>${price}</span>
-                    {quantity >= 0 && (
+                    {noSelector ? <span></span> : (
                         <div className={styles['quantity-selector']}>
                             <button
                                 className={`${styles['quantity-button']} ${styles['minus']}`}

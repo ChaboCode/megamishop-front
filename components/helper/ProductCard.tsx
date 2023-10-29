@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ProductCard, { ProductCardParams } from "@/components/checkout/ProductCard";
-import { IProductState } from "@/interfaces/products";
+
+import getConfig from "next/config"
+const { publicRuntimeConfig } = getConfig()
+const { MINIO_ENDPOINT } = publicRuntimeConfig
 
 interface Params {
-    ids: number[]
+    ids: number[],
 }
 
 function ProductCardHelper({ ids }: Params): JSX.Element {
@@ -23,7 +26,7 @@ function ProductCardHelper({ ids }: Params): JSX.Element {
                 .then(product => {
                     const { price, name } = product
                     products.push(<ProductCard key={id} productID={id} price={price} quantity={-1} title={name}
-                        picture={`/products/${id}_0.png`} />)
+                        picture={`http://${MINIO_ENDPOINT}/web/${id}_0.png`} noSelector />)
                     count++
                     if (count == ids.length) {
                         setCards(products)
