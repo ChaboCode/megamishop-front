@@ -10,7 +10,7 @@ function AddProduct() {
     const [stock, setStock] = useState(0)
     const [discount, setDiscount] = useState(0)
     const [createObjectURL, setCreateObjectURL] = useState("")
-    const [selectedCategory, setCategory] = useState("")
+    const [selectedCategory, setCategory] = useState("figures")
 
     const uploadToClient = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
