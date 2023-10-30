@@ -66,7 +66,7 @@ function ProductCard({ picture, productID, cartProductID, title, price, quantity
                 <div className={styles['prices']}>
                     <span className={styles['discount']}>900</span>
                     <span className={styles['unit-price']}>${price}</span>
-                    {noSelector ? <span></span> : (
+                    {noSelector ? <div>.</div> : (
                         <div className={styles['quantity-selector']}>
                             <button
                                 className={`${styles['quantity-button']} ${styles['minus']}`}
